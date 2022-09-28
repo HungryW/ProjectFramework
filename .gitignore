@@ -1,0 +1,6 @@
+/ZM/*.csproj
+/ZM/*.sln
+/ZM/*.vsconfig
+Library
+Temp
+.vs
