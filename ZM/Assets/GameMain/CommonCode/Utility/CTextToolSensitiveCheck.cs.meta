@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 52cfa0d5b8c087f43858ecf47e8368dc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - TxtSensitive: {fileID: 4900000, guid: f566ad98c2817c945a60e5feafcae56b, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

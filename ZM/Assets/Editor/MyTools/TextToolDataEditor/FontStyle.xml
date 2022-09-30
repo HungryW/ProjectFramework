@@ -1,0 +1,100 @@
+<fontStyle name="fontStyleData">
+  <colorData>
+    <fColorData name="白色" value="FFFFFF" />
+    <fColorData name="regular黄" value="FFFADC" />
+    <fColorData name="淡黄色" value="FFF3A6" />
+    <fColorData name="亮黄色" value="FFE752" />
+    <fColorData name="沉黄色" value="FFD053" />
+    <fColorData name="体力红" value="ff6a44" />
+    <fColorData name="那红色" value="FF5656" />
+    <fColorData name="标题金" value="FEBA57" />
+    <fColorData name="品质橙" value="FB9A3C" />
+    <fColorData name="标题黄" value="F8C63D" />
+    <fColorData name="警告红" value="eb3d3d" />
+    <fColorData name="米黄色" value="E7CF9B" />
+    <fColorData name="淡紫色" value="E6E6F8" />
+    <fColorData name="橙红色" value="D34F00" />
+    <fColorData name="蓝灰色" value="C5DADD" />
+    <fColorData name="淡棕色" value="BAA67F" />
+    <fColorData name="压灰" value="aba9a1" />
+    <fColorData name="灰蓝" value="92b0ba" />
+    <fColorData name="灰色" value="8b9094" />
+    <fColorData name="品质紫" value="852DE9" />
+    <fColorData name="屎色" value="805325" />
+    <fColorData name="浅褐色" value="7F4B29" />
+    <fColorData name="灰色" value="7C8084" />
+    <fColorData name="升级绿" value="77DB96" />
+    <fColorData name="褐色" value="6C321B" />
+    <fColorData name="黑褐色" value="542E25" />
+    <fColorData name="亮蓝色" value="49B9E1" />
+    <fColorData name="蓝色" value="3D58ED" />
+    <fColorData name="对话黑" value="1B1B1B" />
+    <fColorData name="青色" value="086E77" />
+  </colorData>
+  <sizeData>
+    <osize_num>18</osize_num>
+    <osize_num>20</osize_num>
+    <osize_num>22</osize_num>
+    <osize_num>24</osize_num>
+    <osize_num>26</osize_num>
+    <osize_num>26</osize_num>
+    <osize_num>28</osize_num>
+    <osize_num>30</osize_num>
+    <osize_num>32</osize_num>
+    <osize_num>34</osize_num>
+    <osize_num>36</osize_num>
+    <osize_num>38</osize_num>
+    <osize_num>42</osize_num>
+    <osize_num>46</osize_num>
+    <osize_num>48</osize_num>
+    <osize_num>50</osize_num>
+    <osize_num>55</osize_num>
+    <osize_num>56</osize_num>
+    <osize_num>64</osize_num>
+    <osize_num>78</osize_num>
+    <osize_num>90</osize_num>
+    <osize_num>160</osize_num>
+  </sizeData>
+  <outLineColor>
+    <oColorData name="白色" value="FFFFFF" />
+    <oColorData name="极淡橙" value="FFF0CB" />
+    <oColorData name="浅灰橙" value="E3D2C2" />
+    <oColorData name="暗橙色" value="906209" />
+    <oColorData name="按钮红" value="842347" />
+    <oColorData name="橙棕色" value="7a3a0f" />
+    <oColorData name="石棕色" value="6C321B" />
+    <oColorData name="棕色" value="6B3A12" />
+    <oColorData name="NEW" value="693108" />
+    <oColorData name="新棕色" value="61373b" />
+    <oColorData name="紫褐色" value="603132" />
+    <oColorData name="标题棕" value="522511" />
+    <oColorData name="深紫色" value="4F5386" />
+    <oColorData name="进度棕" value="4F302E" />
+    <oColorData name="紫色" value="46104A" />
+    <oColorData name="深褐色" value="452109" />
+    <oColorData name="暗红色" value="400B02" />
+    <oColorData name="深栗色" value="3a170d" />
+    <oColorData name="红酒棕" value="36160b" />
+    <oColorData name="压灰黑" value="352f2b" />
+    <oColorData name="深灰" value="2E2E2E" />
+    <oColorData name="深灰褐" value="2e140a" />
+    <oColorData name="深绿色" value="294619" />
+    <oColorData name="升级绿" value="215F16" />
+    <oColorData name="暗青色" value="1B464E" />
+    <oColorData name="暗黑" value="1B1515" />
+    <oColorData name="深蓝色" value="19425E" />
+    <oColorData name="暗蓝色" value="153441" />
+    <oColorData name="蓝黑色" value="04313a" />
+    <oColorData name="蓝黑色" value="04313a" />
+    <oColorData name="黑色" value="000000" />
+    <oColorData name="黑蓝色" value="091e21" />
+  </outLineColor>
+  <outLineSize>
+    <fsize_num>1</fsize_num>
+    <fsize_num>2</fsize_num>
+    <fsize_num>3</fsize_num>
+    <fsize_num>4</fsize_num>
+    <fsize_num>5</fsize_num>
+    <fsize_num>6</fsize_num>
+  </outLineSize>
+</fontStyle>

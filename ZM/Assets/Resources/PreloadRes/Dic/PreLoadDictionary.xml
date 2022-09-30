@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Dictionaries>
+  <Dictionary Language="English">
+    <String Key="Preloading" Value="Loading{0}%" />
+    <String Key="CheckVersion.Tips" Value="Checking if the game needs update. Please wait..." />
+    <String Key="UpdateResource.Tips" Value="{0}/{1}, {2}/{3}, {4:P0}, {5}/s" />
+    <String Key="PreloadRestartImmediately" Value="reboot now" />
+    <String Key="PreloadTipNetErrorRestart" Value=" Network error, please check the network connection and restart the game" />
+    <String Key="ForceUpdate.Title" Value="OUT OF DATE" />
+    <String Key="ForceUpdate.Message" Value="The current game version is out-of-date. Would you like to go for update now?" />
+    <String Key="ForceUpdate.UpdateButton" Value="UPDATE" />
+    <String Key="ForceUpdate.QuitButton" Value="QUIT" />
+  </Dictionary>
+  <Dictionary Language="ChineseSimplified">
+    <String Key="ForceUpdate.Title" Value="强制更新" />
+    <String Key="ForceUpdate.Message" Value="当前游戏版本过旧，是否前往更新？" />
+    <String Key="ForceUpdate.UpdateButton" Value="更新" />
+    <String Key="ForceUpdate.QuitButton" Value="退出" />
+    <String Key="Preloading" Value="加载中{0}%" />
+    <String Key="CheckVersion.Tips" Value="正在检查游戏是否需要更新，请稍候……" />
+    <String Key="UpdateResource.Tips" Value="{0}/{1}, {2}/{3}, {4:P0}, {5}/s" />
+    <String Key="PreloadRestartImmediately" Value="立即重启" />
+    <String Key="PreloadTipNetErrorRestart" Value=" 网络错误,请检查网络连接后重启游戏" />
+  </Dictionary>
+</Dictionaries>
