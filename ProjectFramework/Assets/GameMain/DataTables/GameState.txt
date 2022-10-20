@@ -1,0 +1,7 @@
+!∮Id∮Des∮GameStateName∮SceneAssetName∮BackgroundMusicId∮CameraPos∮CameraSize∮IsCanDrag∮CameraMinSize∮CameraMaxSize
+@∮int∮desc∮string∮string∮string∮string∮float∮int∮float∮float
+∮0∮切换场景∮CGameStateChangeScene∮0∮0∮0,0∮5.4∮0∮5.4∮5.4
+∮1∮战斗测试∮CGameStateTestBattle∮BattleTest∮2∮0,0∮5.4∮1∮5.4∮5.4
+∮2∮主场景∮CGameStateMain∮Main∮1∮0,0∮7.4∮1∮5∮9
+∮3∮登录∮CGameStateLogin∮Login∮0∮0,0∮5.4∮0∮5.4∮5.4
+∮4∮室内∮CGameStateHome∮Home∮0∮0,0∮5.4∮0∮5.4∮5.4

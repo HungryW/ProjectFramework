@@ -1,6 +1,7 @@
-/ZM/*.csproj
-/ZM/*.sln
-/ZM/*.vsconfig
+/ProjectFramework/*.csproj
+/ProjectFramework/*.sln
+/ProjectFramework/*.vsconfig
 Library
 Temp
 .vs
+/ProjectFramework/obj
