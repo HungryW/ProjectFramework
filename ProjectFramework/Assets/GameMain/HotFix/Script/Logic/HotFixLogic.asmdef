@@ -1,0 +1,17 @@
+{
+    "name": "HotFixLogic",
+    "rootNamespace": "",
+    "references": [
+        "GUID:67196a45a0d96a5438d4887de8007093",
+        "GUID:cab16432642a5604b9c3f3b2d349c96b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
