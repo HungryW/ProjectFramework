@@ -35,7 +35,7 @@ namespace Defines
 			private set;
 		}
 		
-		public bool HotFix
+		public string DllName
 		{
 			get;
 			private set;
@@ -61,7 +61,7 @@ namespace Defines
 			GroupName = text[index++];
 			AllowMultiInstance= bool.Parse(text[index++]);
 			PauseCoveredUIForm= bool.Parse(text[index++]);
-			HotFix= bool.Parse(text[index++]);
+			DllName = text[index++];
 			NeedBlurBg= bool.Parse(text[index++]);
 			return true;
 		}

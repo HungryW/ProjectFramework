@@ -1,9 +1,5 @@
-﻿using GameFramework;
-using GameFrameworkPackage;
-using System.Collections;
-using System.Collections.Generic;
+﻿using GameFrameworkPackage;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using DG.Tweening;
 using System;
@@ -134,26 +130,27 @@ namespace HotFixEntry
 
     public class CUICommonLoading : CUIBase
     {
-        [SerializeField]
         private Image ImgBg;
 
         private COpenParamCommonLoading m_Param;
         private bool m_bStartLoad;
 
-
-
-        protected override void OnInit(object userData)
+        protected override void _InitComponents()
         {
-            base.OnInit(userData);
+            ImgBg = transform.Find("ImgBg").GetComponent<Image>();
         }
 
-        protected override void OnUpdateShow(object userData)
+        protected override void _OnInit(object userData)
         {
-            base.OnUpdateShow(userData);
+            base._OnInit(userData);
+        }
+
+        protected override void _OnOpenShow(object userData)
+        {
+            base._OnOpenShow(userData);
             _InitData(userData);
             _InitShow();
         }
-
         private void _InitData(object userData)
         {
             m_Param = userData as COpenParamCommonLoading;
@@ -179,7 +176,7 @@ namespace HotFixEntry
             m_Param.OnLoadStartEnd();
         }
 
-        protected override void OnUpdate(float a_fElapseSeconds, float a_fRealElapeSeconds)
+        public override void OnUpdate(float a_fElapseSeconds, float a_fRealElapeSeconds)
         {
             base.OnUpdate(a_fElapseSeconds, a_fRealElapeSeconds);
             if (!m_bStartLoad)
@@ -206,10 +203,9 @@ namespace HotFixEntry
             seq.Append(ImgBg.DOFade(0, m_Param.GetFadeOutTime()))
                 .AppendCallback(_OnFadeOutEnd);
         }
-
         private void _OnFadeOutEnd()
         {
-            Close();
+            _Close();
             m_Param.OnLoadEnd();
         }
     }

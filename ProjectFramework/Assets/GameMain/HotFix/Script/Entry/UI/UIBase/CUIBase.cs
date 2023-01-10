@@ -103,7 +103,7 @@ namespace HotFixEntry
         private void _OnOpen(COpenUIParam a_refOpenParam)
         {
             _SetCanRaycastTarget(false);
-            OnOpenShow(a_refOpenParam.m_oUserData);
+            _OnOpenShow(a_refOpenParam.m_oUserData);
             CHotFixEntry.Event.FireNow(null, ReferencePool.Acquire<CEventUIOpenStartArgs>().Fill(m_nConfigId));
             _PlayOpenAnim(_OnOpenAnimEnd);
             COpenUIParam.Delete(a_refOpenParam);
@@ -120,27 +120,27 @@ namespace HotFixEntry
             CHotFixEntry.Event.FireNow(null, ReferencePool.Acquire<CEventUIOpenEndArgs>().Fill(m_nConfigId));
 
         }
-        protected virtual void OnOpenShow(object userData)
+        protected virtual void _OnOpenShow(object userData)
         {
 
         }
 
-        protected virtual void OnUpdateData(object userData)
+        protected virtual void _OnUpdateData(object userData)
         {
 
         }
 
-        public void Close(bool a_bPlayCloseAnim = true)
+        protected void _Close(bool a_bPlayCloseAnim = true)
         {
             _SetCanRaycastTarget(false);
             CHotFixEntry.Event.FireNow(null, ReferencePool.Acquire<CEventUICloseStartArgs>().Fill(m_nConfigId));
             if (a_bPlayCloseAnim)
             {
-                _PlayCloseAnim(_Close);
+                _PlayCloseAnim(__Close);
             }
             else
             {
-                _Close();
+                __Close();
             }
         }
 
@@ -149,7 +149,7 @@ namespace HotFixEntry
             a_fnOnCloseAnimEnd.SafeInvoke();
         }
 
-        private void _Close()
+        private void __Close()
         {
             UILogic.Close();
             CHotFixEntry.Event.FireNow(null, ReferencePool.Acquire<CEventUICloseEndArgs>().Fill(m_nConfigId));

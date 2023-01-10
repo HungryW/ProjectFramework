@@ -1,5 +1,5 @@
-!∮Id∮Des∮AssetName∮GroupName∮AllowMultiInstance∮PauseCoveredUIForm∮HotFix∮NeedBlurBg
-@∮int∮desc∮string∮string∮bool∮bool∮bool∮bool
+!∮Id∮Des∮AssetName∮GroupName∮AllowMultiInstance∮PauseCoveredUIForm∮DllName∮NeedBlurBg
+@∮int∮desc∮string∮string∮bool∮bool∮string∮bool
 ∮1∮通用文字提示∮UICommonTextTip∮TipMsg∮False∮False∮False∮False
 ∮2∮通用确定取消提示∮UICommonConfirm∮AboveUI∮False∮False∮False∮True
 ∮3∮通用确定取消提示（带复选框）∮UICommonConfirmHaveCheckBox∮AboveUI∮False∮False∮False∮True

@@ -147,7 +147,8 @@ namespace HotFixEntry
                 }
             }
             COpenUIParam param = COpenUIParam.Create(a_nUIId, a_oUserData);
-            return refUIComponent.OpenUIForm(szAssetName, drUI.GroupName, drUI.PauseCoveredUIForm, param);
+            return refUIComponent.OpenHotFixUIForm(szAssetName, drUI.GroupName, drUI.PauseCoveredUIForm, drUI.DllName, drUI.GetClassName(), param);
+  
         }
 
         private CUIBase _GetOpenedUIBase(EUIFormID a_eUIID)

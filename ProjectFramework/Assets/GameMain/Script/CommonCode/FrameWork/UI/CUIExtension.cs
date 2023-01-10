@@ -176,13 +176,13 @@ namespace GameFrameworkPackage
             a_uiComponent.CloseUIForm(a_uiLogic.UIForm);
         }
 
-        private static int? OpenHotFixUIForm(this UIComponent a_uiComponent, string a_szAssetName, string a_szGroupName, bool a_bIsauseCoveredUIForm, string a_szHotFixDllName, string a_szHotFixClassName, object a_oUserData)
+        public static int? OpenHotFixUIForm(this UIComponent a_uiComponent, string a_szAssetName, string a_szGroupName, bool a_bIsauseCoveredUIForm, string a_szHotFixDllName, string a_szHotFixClassName, object a_oUserData)
         {
             COpenHotFixLogicUIParam param = COpenHotFixLogicUIParam.Create(a_szHotFixDllName, a_szHotFixClassName, a_oUserData);
             return a_uiComponent.OpenUIForm(a_szAssetName, a_szGroupName, CConstAssetPriority.UIFormAsset, a_bIsauseCoveredUIForm, param);
         }
 
-        private static int? OpenUIForm(this UIComponent a_uiComponent, string a_szAssetName, string a_szGroupName, bool a_bIsauseCoveredUIForm, object a_oUserData)
+        public static int? OpenUIForm(this UIComponent a_uiComponent, string a_szAssetName, string a_szGroupName, bool a_bIsauseCoveredUIForm, object a_oUserData)
         {
             return a_uiComponent.OpenUIForm(a_szAssetName, a_szGroupName, CConstAssetPriority.UIFormAsset, a_bIsauseCoveredUIForm, a_oUserData);
         }
