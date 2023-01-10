@@ -39,7 +39,7 @@ namespace GameFrameworkPackage
             }
             else
             {
-                ChangeState<CProcedurePreload>(procedureOwner);
+                ChangeState<CProcedureMain>(procedureOwner);
             }
         }
 

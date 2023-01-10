@@ -1,0 +1,6 @@
+!∮Id∮Des∮Name∮VolumeRate
+@∮int∮desc∮string∮float
+∮1∮主场景∮zhuchangjing∮0.4
+∮2∮战斗∮zhandou∮0.4
+∮3∮探索∮tansuo∮0.4
+∮4∮室内∮zhuchangjing∮0.2

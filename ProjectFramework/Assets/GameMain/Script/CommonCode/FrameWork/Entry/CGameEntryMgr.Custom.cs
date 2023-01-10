@@ -16,9 +16,16 @@ namespace GameFrameworkPackage
             private set;
         }
 
+        public static CHotFixComponent HotFixComponent
+        {
+            get;
+            private set;
+        }
+
         private static void InitCustomComponents()
         {
             PreloadComponent = GameEntry.GetComponent<CPreloadDataComponent>();
+            HotFixComponent = GameEntry.GetComponent<CHotFixComponent>();
         }
     }
 }

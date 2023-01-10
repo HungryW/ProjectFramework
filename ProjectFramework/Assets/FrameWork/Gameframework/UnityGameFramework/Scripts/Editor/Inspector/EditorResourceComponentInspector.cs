@@ -25,7 +25,7 @@ namespace UnityGameFramework.Editor
             serializedObject.Update();
 
             EditorResourceComponent t = (EditorResourceComponent)target;
-
+            
             if (EditorApplication.isPlaying && IsPrefabInHierarchy(t.gameObject))
             {
                 EditorGUILayout.LabelField("Load Waiting Asset Count", t.LoadWaitingAssetCount.ToString());

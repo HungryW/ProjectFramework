@@ -73,7 +73,7 @@ namespace GameFrameworkPackage
                 return;
             }
 
-            ChangeState<CProcedurePreload>(procedureOwner);
+            ChangeState<CProcedureMain>(procedureOwner);
         }
 
         private void StartUpdateResources(object userData)

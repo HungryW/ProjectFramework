@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using GameFramework;
 using GameFrameworkPackage;
-using Defines.DataTable;
 
 [CustomEditor(typeof(CTextPrefabTool))]
 [ExecuteInEditMode]

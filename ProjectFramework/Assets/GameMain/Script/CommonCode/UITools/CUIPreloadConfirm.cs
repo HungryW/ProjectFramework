@@ -1,6 +1,4 @@
-﻿using Defines;
-using GameFrameworkPackage;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,6 +7,89 @@ using UnityGameFramework.Runtime;
 
 namespace GameFrameworkPackage
 {
+    public class COpenParamCommonConfirm
+    {
+        private string m_szContent;
+        private UnityAction m_fnConfirm;
+        private UnityAction m_fnCancel;
+        private bool m_bShowCancel;
+        private string m_sCancelBtnName;
+        private string m_sConfirmBtnName;
+
+        public COpenParamCommonConfirm(string a_szContent)
+        {
+            m_szContent = a_szContent;
+            m_fnCancel = null;
+            m_fnConfirm = null;
+            m_bShowCancel = true;
+            m_sCancelBtnName = "";
+            m_sConfirmBtnName = "";
+        }
+
+        public string GetContent()
+        {
+            return m_szContent;
+        }
+
+        public void SetContent(string a_szContent)
+        {
+            m_szContent = a_szContent;
+        }
+
+        public void SetConfirmCallback(UnityAction a_fnConfirmCallback)
+        {
+            m_fnConfirm = a_fnConfirmCallback;
+        }
+
+        public void SetCancelCallback(UnityAction a_fnCancelCallback)
+        {
+            m_fnCancel = a_fnCancelCallback;
+        }
+
+        public void SetShowCancel(bool a_bIsShow)
+        {
+            m_bShowCancel = a_bIsShow;
+        }
+
+        public void InvokeConfirm()
+        {
+            if (m_fnConfirm != null)
+            {
+                m_fnConfirm.Invoke();
+            }
+        }
+
+        public void InvokeCancel()
+        {
+            if (m_fnCancel != null)
+            {
+                m_fnCancel.Invoke();
+            }
+        }
+
+        public bool IsShowCancel()
+        {
+            return m_bShowCancel;
+        }
+
+        public void SetCancelBtnName(string a_sName)
+        {
+            m_sCancelBtnName = a_sName;
+        }
+        public string GetCancelBtnName()
+        {
+            return m_sCancelBtnName;
+        }
+        public void SetConfirmBtnName(string a_sName)
+        {
+            m_sConfirmBtnName = a_sName;
+        }
+        public string GetConfirmBtnName()
+        {
+            return m_sConfirmBtnName;
+        }
+    }
+
     public class CUIPreloadConfirm : MonoBehaviour
     {
         private GameObject GoContent;

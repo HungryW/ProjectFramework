@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameFramework.DataTable;
-using Defines;
-using Defines.DataTable;
 using GameFramework.UI;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -117,23 +115,11 @@ namespace GameFrameworkPackage
             a_uiComponet.SetUIFormInstanceLocked(a_uiLogic.UIForm, a_bLocked);
         }
 
-        public static bool HasUIForm(this UIComponent a_uiComponent, EUIFormID a_eUIId, string a_szGroupName = null)
+        public static bool HasUIForm(this UIComponent a_uiComponent, string a_szUIAssetName, string a_szGroupName)
         {
-            return HasUIForm(a_uiComponent, (int)a_eUIId, a_szGroupName);
-        }
-
-        public static bool HasUIForm(this UIComponent a_uiComponent, int a_nUIId, string a_szGroupName = null)
-        {
-            DRUIForm drUI = CGameEntryMgr.DataTable.GetDataRow<DRUIForm>(a_nUIId);
-            if (drUI == null)
-            {
-                return false;
-            }
-
-            string szAssetName = CAssestPathUtility.GetUIFormAsset(drUI.AssetName);
             if (string.IsNullOrEmpty(a_szGroupName))
             {
-                return a_uiComponent.HasUIForm(szAssetName);
+                return a_uiComponent.HasUIForm(a_szUIAssetName);
             }
 
             IUIGroup uiGroup = a_uiComponent.GetUIGroup(a_szGroupName);
@@ -142,54 +128,15 @@ namespace GameFrameworkPackage
                 return false;
             }
 
-            return uiGroup.HasUIForm(szAssetName);
+            return uiGroup.HasUIForm(a_szUIAssetName);
         }
 
-        public static bool GetUIFormVisible(this UIComponent a_uiComponent, EUIFormID a_eUIId, string a_szGroupName = null)
+        public static UIForm GetUIForm(this UIComponent a_uiComponent, string a_szUIAssetName, string a_szGroupName)
         {
-            CLogicUI uiLogic = GetUIForm(a_uiComponent, a_eUIId, a_szGroupName);
-            if (null == uiLogic)
-            {
-                return false;
-            }
-
-            return uiLogic.Visible;
-        }
-
-        public static void RefocusUI(this UIComponent a_uiComponent, EUIFormID a_eUIId)
-        {
-            UIForm UIForm = a_uiComponent.GetForm(a_eUIId);
-            if (null == UIForm)
-            {
-                return;
-            }
-            ((CLogicUI)UIForm.Logic).BeforeRefocus();
-            a_uiComponent.RefocusUIForm(UIForm);
-        }
-
-        public static void ReLosefocusUI(this UIComponent a_uiComponent, EUIFormID a_eUIId)
-        {
-            CLogicUI UIForm = a_uiComponent.GetUIForm(a_eUIId);
-            if (null == UIForm)
-            {
-                return;
-            }
-            UIForm.ReLoseFocus();
-        }
-
-        public static UIForm GetForm(this UIComponent a_uiComponent, EUIFormID a_nUIId, string a_szGroupName = null)
-        {
-            DRUIForm drUI = CGameEntryMgr.DataTable.GetDataRow<DRUIForm>((int)a_nUIId);
-            if (null == drUI)
-            {
-                return null;
-            }
-
-            string szAssetName = CAssestPathUtility.GetUIFormAsset(drUI.AssetName);
             UIForm ui = null;
             if (string.IsNullOrEmpty(a_szGroupName))
             {
-                ui = a_uiComponent.GetUIForm(szAssetName);
+                ui = a_uiComponent.GetUIForm(a_szUIAssetName);
                 return ui;
             }
 
@@ -199,144 +146,45 @@ namespace GameFrameworkPackage
                 return null;
             }
 
-            ui = (UIForm)uiGroup.GetUIForm(szAssetName);
+            ui = (UIForm)uiGroup.GetUIForm(a_szUIAssetName);
             return ui;
         }
 
-        public static CLogicUI GetUIForm(this UIComponent a_uiComponent, EUIFormID a_eUIId, string a_szGroupName = null)
+        public static CLogicUI GetUILogic(this UIComponent a_uiComponent, string a_szUIAssetName, string a_szGroupName)
         {
-            return GetUIForm(a_uiComponent, (int)a_eUIId, a_szGroupName);
+            UIForm uiForm = a_uiComponent.GetUIForm(a_szUIAssetName, a_szGroupName);
+            if (uiForm == null)
+            {
+                return null;
+            }
+            return (CLogicUI)uiForm.Logic;
         }
 
-        public static CLogicUI GetUIForm(this UIComponent a_uiComponent, int a_nUIId, string a_szGroupName = null)
+        public static bool GetUIFormVisible(this UIComponent a_uiComponent, string a_szUIAssetName, string a_szGroupName)
         {
-            if (CGameEntryMgr.DataTable.GetDataTable<DRUIForm>() == null)
+            CLogicUI uiLogic = GetUILogic(a_uiComponent, a_szUIAssetName, a_szGroupName);
+            if (null == uiLogic)
             {
-                return null;
+                return false;
             }
-            DRUIForm drUI = CGameEntryMgr.DataTable.GetDataRow<DRUIForm>(a_nUIId);
-            if (null == drUI)
-            {
-                return null;
-            }
-
-            string szAssetName = CAssestPathUtility.GetUIFormAsset(drUI.AssetName);
-            UIForm ui = null;
-            if (string.IsNullOrEmpty(a_szGroupName))
-            {
-                ui = a_uiComponent.GetUIForm(szAssetName);
-                if (ui == null)
-                {
-                    return null;
-                }
-
-                return (CLogicUI)ui.Logic;
-            }
-
-            IUIGroup uiGroup = a_uiComponent.GetUIGroup(a_szGroupName);
-            if (null == uiGroup)
-            {
-                return null;
-            }
-
-            ui = (UIForm)uiGroup.GetUIForm(szAssetName);
-            if (null == ui)
-            {
-                return null;
-            }
-
-            return (CLogicUI)ui.Logic;
+            return uiLogic.Visible;
         }
+
 
         public static void CloseUIForm(this UIComponent a_uiComponent, CLogicUI a_uiLogic)
         {
             a_uiComponent.CloseUIForm(a_uiLogic.UIForm);
         }
 
-        public static void CloseUIForm(this UIComponent a_uiComponent, EUIFormID a_eUIId)
+        private static int? OpenHotFixUIForm(this UIComponent a_uiComponent, string a_szAssetName, string a_szGroupName, bool a_bIsauseCoveredUIForm, string a_szHotFixDllName, string a_szHotFixClassName, object a_oUserData)
         {
-            DRUIForm drUI = CGameEntryMgr.DataTable.GetDataRow<DRUIForm>((int)a_eUIId);
-            if (null == drUI)
-            {
-                Log.Warning("Can not load UI form '{0}' from data table.", (int)a_eUIId);
-                return;
-            }
-            string szAssetName = CAssestPathUtility.GetUIFormAsset(drUI.AssetName);
-            if (a_uiComponent.IsLoadingUIForm(szAssetName))
-            {
-                return;
-            }
-            if (!a_uiComponent.HasUIForm(szAssetName))
-            {
-                return;
-            }
-            CloseUIForm(a_uiComponent, GetUIForm(a_uiComponent, a_eUIId));
+            COpenHotFixLogicUIParam param = COpenHotFixLogicUIParam.Create(a_szHotFixDllName, a_szHotFixClassName, a_oUserData);
+            return a_uiComponent.OpenUIForm(a_szAssetName, a_szGroupName, CConstAssetPriority.UIFormAsset, a_bIsauseCoveredUIForm, param);
         }
 
-        public static int? OpenUIForm(this UIComponent a_uiComponent, EUIFormID a_eUIID, object a_oUserData = null)
+        private static int? OpenUIForm(this UIComponent a_uiComponent, string a_szAssetName, string a_szGroupName, bool a_bIsauseCoveredUIForm, object a_oUserData)
         {
-            return OpenUIForm(a_uiComponent, (int)a_eUIID, a_oUserData);
-        }
-
-        public static int? OpenUIForm(this UIComponent a_uiComponent, int a_nUIId, object a_oUserData = null)
-        {
-            DRUIForm drUI = CGameEntryMgr.DataTable.GetDataRow<DRUIForm>(a_nUIId);
-            if (null == drUI)
-            {
-                Log.Warning("Can not load UI form '{0}' from data table.", a_nUIId);
-                return null;
-            }
-            string szAssetName = CAssestPathUtility.GetUIFormAsset(drUI.AssetName);
-            if (!drUI.AllowMultiInstance)
-            {
-                if (a_uiComponent.IsLoadingUIForm(szAssetName))
-                {
-                    return null;
-                }
-
-                if (a_uiComponent.HasUIForm(szAssetName))
-                {
-                    return null;
-                }
-            }
-
-            return a_uiComponent.OpenUIForm(szAssetName, a_nUIId, true, a_oUserData);
-        }
-
-        public static int? OpenHotUIForm(this UIComponent a_uiComponent, EUIFormID a_eUIID, object a_oUserData = null, bool a_bPlayOpenAnim = true)
-        {
-            return OpenHotUIForm(a_uiComponent, (int)a_eUIID, a_oUserData, a_bPlayOpenAnim);
-        }
-
-        public static int? OpenHotUIForm(this UIComponent a_uiComponent, int a_nUIId, object a_oUserData = null, bool a_bPlayOpenAnim = true)
-        {
-            DRUIForm drUI = CGameEntryMgr.DataTable.GetDataRow<DRUIForm>(a_nUIId);
-            if (null == drUI)
-            {
-                Log.Warning("Can not load UI form '{0}' from data table.", a_nUIId);
-                return null;
-            }
-            string szAssetName = CAssestPathUtility.GetUIFormAsset(drUI.AssetName);
-            if (!drUI.AllowMultiInstance)
-            {
-                if (a_uiComponent.IsLoadingUIForm(szAssetName))
-                {
-                    return null;
-                }
-
-                if (a_uiComponent.HasUIForm(szAssetName))
-                {
-                    return null;
-                }
-            }
-            return a_uiComponent.OpenUIForm(szAssetName, a_nUIId, a_bPlayOpenAnim, a_oUserData);
-        }
-
-        private static int? OpenUIForm(this UIComponent a_uiComponent, string a_szAssetName, int a_nConfigId, bool a_bPlayOpenAnim, object a_oUserData)
-        {
-            DRUIForm drUI = CGameEntryMgr.DataTable.GetDataRow<DRUIForm>(a_nConfigId);
-            CUIPackageUserData uiData = new CUIPackageUserData(a_nConfigId, drUI.AssetName, drUI.NeedBlurBg, a_bPlayOpenAnim, a_oUserData);
-            return a_uiComponent.OpenUIForm(a_szAssetName, drUI.GroupName, CConstAssetPriority.UIFormAsset, drUI.PauseCoveredUIForm, uiData);
+            return a_uiComponent.OpenUIForm(a_szAssetName, a_szGroupName, CConstAssetPriority.UIFormAsset, a_bIsauseCoveredUIForm, a_oUserData);
         }
 
         public static void CloseAllUIByGroupName(this UIComponent a_uiComponent, string a_szGroupName)
@@ -354,11 +202,5 @@ namespace GameFrameworkPackage
             }
         }
 
-        #region
-        public static void ShowTip(this UIComponent uiComponent, string tip)
-        {
-            CUICommonTextTip.ShowTip(tip);
-        }
-        #endregion
     }
 }

@@ -1,9 +1,6 @@
-﻿using Logic;
-using GameFramework;
-using GameFramework.Procedure;
-using UnityGameFramework.Runtime;
+﻿
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
-using UnityEngine;
+using DG.Tweening;
 
 namespace GameFrameworkPackage
 {
@@ -13,6 +10,7 @@ namespace GameFrameworkPackage
         {
             base.OnEnter(a_pProcedureOwner);
             _InitData();
+            CGameEntryMgr.HotFixComponent.LoadHotFix();
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -23,15 +21,15 @@ namespace GameFrameworkPackage
 
         private void _InitData()
         {
-            //DOTween.SetTweensCapacity(200, 100);
+            DOTween.SetTweensCapacity(200, 100);
             CSDKMgr.Instance.InitIap();
             CTimeStampMgr.Instance.Init();
         }
 
         protected void _CleanData()
         {
-            //DOTween.Clear();
-            if(CTimeStampMgr.Instance != null) CTimeStampMgr.Instance.Clean();
+            DOTween.Clear();
+            if (CTimeStampMgr.Instance != null) CTimeStampMgr.Instance.Clean();
         }
     }
 }

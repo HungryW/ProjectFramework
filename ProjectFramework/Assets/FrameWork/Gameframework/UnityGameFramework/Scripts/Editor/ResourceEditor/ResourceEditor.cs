@@ -43,6 +43,7 @@ namespace UnityGameFramework.Editor.ResourceTools
         private int m_CurrentResourceContentCount = 0;
         private int m_CurrentResourceRowOnDraw = 0;
         private int m_CurrentSourceRowOnDraw = 0;
+        private bool m_bBatchCreateAbPacked = true;
 
         [MenuItem("Game Framework/Resource Tools/Resource Editor", false, 41)]
         private static void Open()
@@ -85,6 +86,7 @@ namespace UnityGameFramework.Editor.ResourceTools
             m_CurrentResourceContentCount = 0;
             m_CurrentResourceRowOnDraw = 0;
             m_CurrentSourceRowOnDraw = 0;
+            m_bBatchCreateAbPacked = true;
 
             if (m_Controller.Load())
             {
@@ -533,6 +535,47 @@ namespace UnityGameFramework.Editor.ResourceTools
                     EditorUtility.ClearProgressBar();
                     m_SelectedSourceAssets.Clear();
                     m_CachedSelectedSourceFolders.Clear();
+                }
+            }
+            EditorGUI.EndDisabledGroup();
+
+            EditorGUI.BeginDisabledGroup(selectedSourceAssets.Count <= 0);
+            {
+                if (GUILayout.Button(Utility.Text.Format("<<<根据文件夹生成AB包{0}", selectedSourceAssets.Count.ToString()), GUILayout.Width(200f)))
+                {
+                    int index = 0;
+                    int count = selectedSourceAssets.Count;
+                    Dictionary<string, Resource> mapFolderAB = new Dictionary<string, Resource>();
+                    foreach (SourceAsset sourceAsset in selectedSourceAssets)
+                    {
+                        EditorUtility.DisplayProgressBar("Add AssetBundles", Utility.Text.Format("{0}/{1} processing...", (++index).ToString(), count.ToString()), (float)index / count);
+                        string szABName = sourceAsset.Folder.FromRootPath;
+                        if (!mapFolderAB.ContainsKey(szABName))
+                        {
+                            AddResource(szABName, null, true);
+                            Resource abTemp = m_Controller.GetResource(szABName, null);
+                            if (abTemp == null)
+                            {
+                                continue;
+                            }
+                            m_Controller.SetResourcePacked(abTemp.Name, abTemp.Variant, m_bBatchCreateAbPacked);
+                            mapFolderAB.Add(szABName, abTemp);
+                        }
+                        Resource assetBundle = mapFolderAB[szABName];
+                        AssignAsset(sourceAsset, assetBundle);
+                    }
+
+                    EditorUtility.DisplayProgressBar("Add AssetBundles", "Complete processing...", 1f);
+                    RefreshResourceTree();
+                    EditorUtility.ClearProgressBar();
+                    m_SelectedSourceAssets.Clear();
+                    m_CachedSelectedSourceFolders.Clear();
+                }
+
+                bool bPack = EditorGUILayout.ToggleLeft("Packed", m_bBatchCreateAbPacked, GUILayout.Width(65f));
+                if (bPack != m_bBatchCreateAbPacked)
+                {
+                    m_bBatchCreateAbPacked = bPack;
                 }
             }
             EditorGUI.EndDisabledGroup();

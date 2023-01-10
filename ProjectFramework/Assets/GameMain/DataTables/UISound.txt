@@ -1,0 +1,4 @@
+!∮Id∮Des∮AssetName∮Priority∮Volume
+@∮int∮desc∮string∮int∮float
+∮1∮关闭∮ui_close∮0∮1
+∮2∮点击∮ui_click∮0∮1

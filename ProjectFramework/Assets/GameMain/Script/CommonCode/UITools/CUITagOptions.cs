@@ -113,9 +113,9 @@ namespace GameFrameworkPackage
             }
             if (ListOptionsCtrl[m_nSeletedOptionIdx].NeedHideCheck())
             {
-                CUICommonConfirm.TipConfirm(ListOptionsCtrl[m_nSeletedOptionIdx].GetCheckContent()
-                                            , () => { ListOptionsCtrl[m_nSeletedOptionIdx].OnCheckConfirm(); _ChangeOption(a_nIdx); }
-                                            , () => { _ChangeOption(a_nIdx); });
+                //CUICommonConfirm.TipConfirm(ListOptionsCtrl[m_nSeletedOptionIdx].GetCheckContent()
+                //                            , () => { ListOptionsCtrl[m_nSeletedOptionIdx].OnCheckConfirm(); _ChangeOption(a_nIdx); }
+                //                            , () => { _ChangeOption(a_nIdx); });
             }
             else
             {
@@ -139,9 +139,9 @@ namespace GameFrameworkPackage
         {
             if (ListOptionsCtrl[m_nSeletedOptionIdx].NeedHideCheck())
             {
-                CUICommonConfirm.TipConfirm(ListOptionsCtrl[m_nSeletedOptionIdx].GetCheckContent()
-                                            , () => { a_fnClose(); ListOptionsCtrl[m_nSeletedOptionIdx].OnCheckConfirm(); }
-                                            , a_fnClose);
+                //CUICommonConfirm.TipConfirm(ListOptionsCtrl[m_nSeletedOptionIdx].GetCheckContent()
+                //                            , () => { a_fnClose(); ListOptionsCtrl[m_nSeletedOptionIdx].OnCheckConfirm(); }
+                //                            , a_fnClose);
             }
             else
             {

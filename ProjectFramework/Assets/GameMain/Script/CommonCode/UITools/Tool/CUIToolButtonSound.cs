@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Defines;
-using GameFrameworkPackage;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace GameFrameworkPackage
@@ -25,7 +21,7 @@ namespace GameFrameworkPackage
             {
                 return;
             }
-            CGameEntryMgr.Sound.PlayUISound((int)clickSound);
+            //CGameEntryMgr.Sound.PlayUISound((int)clickSound);
         }
 
         private void Awake()

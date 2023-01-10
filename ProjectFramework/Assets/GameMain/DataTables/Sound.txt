@@ -1,0 +1,3 @@
+!∮Id∮Des∮LogicName∮AssetName∮desc∮desc∮Priority∮Loop∮Volume∮SpatialBlend∮MaxDistance
+@∮int∮desc∮string∮string∮desc∮desc∮int∮bool∮float∮float∮float
+∮10101∮通用翻卡∮Common_CardFlip∮Common_CardFlip∮1∮1∮0∮False∮1∮0∮0

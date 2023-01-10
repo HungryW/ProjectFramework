@@ -33,7 +33,7 @@ namespace GameFrameworkPackage
 
         public abstract string GetPayChannel();
         public abstract void RefreshProduce(Action a_fnOnRefreshSuccess, Action<string> a_fnOnRefreshFail);
-        public abstract CSDKIAPProductInfo GetProduceInfo(int a_nIAPId);
+        public abstract CSDKIAPProductInfo GetProduceInfo(string a_szSkuId);
         public abstract void BuyProduce(int a_nIapId, CIAPBuyExtraInfo a_extraInfo, Action<CIAPDeal> a_fnOnBuySuccess, Action<CIAPDeal, string> a_fnOnBuyFail);
         public abstract void RestoreUnProcessedDeal(Action a_fnOnRestoreDealSuccess, Action<string> a_fnOnRestoreDealFail);
         public abstract List<string> GetAllUnProcessedDeal();
@@ -143,7 +143,7 @@ namespace GameFrameworkPackage
             m_SdkLogic.RefreshProduce(a_fnOnRefreshSuccess, a_fnOnRefreshFail);
         }
 
-        public CSDKIAPProductInfo GetProduceInfo(int a_nIAPId)
+        public CSDKIAPProductInfo GetProduceInfo(string a_nIAPId)
         {
             return m_SdkLogic.GetProduceInfo(a_nIAPId);
         }

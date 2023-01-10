@@ -30,7 +30,8 @@ namespace UnityGameFramework.Editor
         public static char MC_cSplitRow = '∮';
         public static string mc_szConfigPath = "Editor/MyTools/Config/DataTabelGenerateConfig.xml";
         public static string mc_szTxtPath = Application.dataPath + "/GameMain/DataTables";
-        public static string mc_szCsDefinePath = Application.dataPath + "/GameMain/_Logic/Scripts/Defines/DataTableDefine";
+        public static string mc_szCsDefinePath = Application.dataPath + "/GameMain/HotFix/Script/Define/DataTable";
+        public static string mc_szLogicEnumDefinePath = Application.dataPath + "/GameMain/HotFix/Script/Define/Logic";
 
         public static void CreateCofig_CS_Local()
         {
@@ -73,7 +74,53 @@ namespace UnityGameFramework.Editor
             EditorUtility.ClearProgressBar();
             AssetDatabase.Refresh();
         }
+        [MenuItem("Assets/MyTool/DataTable/ChangeExcelToTxtAndEnum", false, 2)]
+        public static void CreateConfigAndEnum()
+        {
+            _ParseToTxtBySelectionExcelFile();
+            _CreateEnumScript();
+            EditorUtility.ClearProgressBar();
+            AssetDatabase.Refresh();
+        }
 
+        private static void _CreateEnumScript()
+        {
+            int nIdx = 0;
+            foreach (var obj in Selection.objects)
+            {
+                FileStream fileStream = File.Open(AssetDatabase.GetAssetPath(obj), FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                IExcelDataReader excelDataReader = ExcelReaderFactory.CreateOpenXmlReader(fileStream);
+                DataSet res = excelDataReader.AsDataSet();
+
+                StringBuilder code = new StringBuilder();
+                code.AppendLine("namespace Defines");
+                code.AppendLine("{");
+                code.AppendLine(string.Format("\tpublic enum E{0}ID", obj.name));
+                code.AppendLine("\t{");
+
+                for (int rowIndex = 5; rowIndex < res.Tables[0].Rows.Count; rowIndex++)
+                {
+                    if (res.Tables[0].Rows[rowIndex].IsNull(0))
+                    {
+                        continue;
+                    }
+
+                    code.AppendLine(string.Format("\t\t{0} = {1},", res.Tables[0].Rows[rowIndex][2], res.Tables[0].Rows[rowIndex][0]));
+                }
+
+                code.AppendLine("\t}");
+                code.AppendLine("}");
+
+
+                string szPath = string.Format("{0}/{1}Define.cs", mc_szLogicEnumDefinePath, obj.name);
+                ByteTool.WriteStringByFile(szPath, code.ToString());
+                Debug.Log(string.Format("CreateUIEnumScript success"));
+                nIdx++;
+                EditorUtility.DisplayProgressBar("生成中", obj.name, (float)nIdx / Selection.objects.Length);
+            }
+            EditorUtility.ClearProgressBar();
+            AssetDatabase.Refresh();
+        }
 
         private static string _GetLocalSeverConfigBatPath()
         {
@@ -347,7 +394,7 @@ namespace UnityGameFramework.Editor
             code.AppendLine("using GameFramework.DataTable;");
             code.AppendLine("using GameFrameworkPackage;");
             code.AppendLine("using LitJson;");
-            code.AppendLine("namespace Defines.DataTable");
+            code.AppendLine("namespace Defines");
             code.AppendLine("{");
             code.AppendLine(string.Format("\tpublic class {0} : IDataRow", szClassName));
             code.AppendLine("\t{");
@@ -377,7 +424,12 @@ namespace UnityGameFramework.Editor
                 code.AppendLine("\t\t");
             }
 
-            code.AppendLine("\t\tpublic void ParseDataRow(string dataRowText)");
+            code.AppendLine("\t\tpublic bool ParseDataRow(byte[] dataRowBytes, int startIndex, int length, object userData)");
+            code.AppendLine("\t\t{");
+            code.AppendLine("\t\t\treturn false;");
+            code.AppendLine("\t\t}");
+
+            code.AppendLine("\t\tpublic bool ParseDataRow(string dataRowText, object userData)");
             code.AppendLine("\t\t{");
             code.AppendLine("\t\t\tstring[] text = CDataTableExtension.SplitDataRow(dataRowText);");
             code.AppendLine("\t\t\tint index = 1;");
@@ -408,6 +460,7 @@ namespace UnityGameFramework.Editor
                     code.AppendLine(string.Format("\t\t\t{0}= float.Parse(text[index++]);", info.szName));
                 }
             }
+            code.AppendLine("\t\t\treturn true;");
             code.AppendLine("\t\t}");
 
             code.AppendLine("\t}");
@@ -463,7 +516,26 @@ namespace UnityGameFramework.Editor
             EditorUtility.ClearProgressBar();
             AssetDatabase.Refresh();
         }
+        public class DataTableCreatorFeildInfo
+        {
+            public string szName
+            {
+                get;
+                private set;
+            }
 
+            public string szType
+            {
+                get;
+                private set;
+            }
+
+            public DataTableCreatorFeildInfo(string a_szFieldName, string a_szFieldType)
+            {
+                szName = a_szFieldName;
+                szType = a_szFieldType;
+            }
+        }
 
         #region 常量表解析
         private static bool _TryParseConstantExcelFileToTxts(DataTable dtSheep)

@@ -1,5 +1,4 @@
-﻿using Defines.DataTable;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -57,10 +56,10 @@ namespace GameFrameworkPackage
             return GetAppChannel().ToString();
         }
 
-        public override CSDKIAPProductInfo GetProduceInfo(int a_nIAPId)
+        public override CSDKIAPProductInfo GetProduceInfo(string a_szKey)
         {
-            DRIapId dr = CGameEntryMgr.DataTable.GetDataRow<DRIapId>(a_nIAPId);
-            CSDKIAPProductInfo produce = new CSDKIAPProductInfo(dr.testLink, dr.name, dr.name, dr.cost, "$", EIAPProductType.Consumable); ;
+            //DRIapId dr = CGameEntryMgr.DataTable.GetDataRow<DRIapId>(a_nIAPId);
+            CSDKIAPProductInfo produce = new CSDKIAPProductInfo(a_szKey, "", "", 0, "$", EIAPProductType.Consumable); ;
             return produce;
         }
 
@@ -90,7 +89,7 @@ namespace GameFrameworkPackage
 
         public override void LogTransaction(string itemName, string transId, int iapId, Hashtable data, List<string> specifiedSDKs)
         {
-            
+
         }
 
         public override void MakeDealsProcessed(List<string> a_listTransactionId)

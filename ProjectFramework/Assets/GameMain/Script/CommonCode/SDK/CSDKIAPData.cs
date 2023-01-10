@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityGameFramework.Runtime;
-using Defines.DataTable;
 using System.Threading.Tasks;
 using LitJson;
 using System;
@@ -67,13 +66,13 @@ namespace GameFrameworkPackage
 
     public static class CIAPConfigMgr
     {
-        public static string GetSkuIdByPlatform(this DRIapId a_dr, string a_szSkuFiledName)
-        {
-            Type t = a_dr.GetType();
-            PropertyInfo field = t.GetProperty(a_szSkuFiledName);
-            object var = field.GetValue(a_dr);
-            return var.ToString();
-        }
+        //public static string GetSkuIdByPlatform(this DRIapId a_dr, string a_szSkuFiledName)
+        //{
+        //    Type t = a_dr.GetType();
+        //    PropertyInfo field = t.GetProperty(a_szSkuFiledName);
+        //    object var = field.GetValue(a_dr);
+        //    return var.ToString();
+        //}
     }
 
     public class CIAPDeal

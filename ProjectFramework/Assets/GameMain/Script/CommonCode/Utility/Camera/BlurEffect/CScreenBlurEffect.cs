@@ -43,7 +43,8 @@ namespace GameFrameworkPackage
 
         void Awake()
         {
-            m_bIsSupport = m_matBlur != null
+            m_bIsSupport = SystemInfo.supportsImageEffects
+                           && m_matBlur != null
                            && m_matBlur.shader.isSupported;
         }
 
@@ -70,7 +71,7 @@ namespace GameFrameworkPackage
 
                 if (m_bScreenShotEffect)
                 {
-                    _OnBlurRenderEnd(m_rtFinal);
+                    _OnScreenShotBlurRenderEnd(m_rtFinal);
                     RenderTexture.ReleaseTemporary(m_rtFinal); //回调里自己去复制贴图，谁调用谁申请和释放复制的贴图
                     Graphics.Blit(source, destination); // 不修改最终输出画面
                 }
@@ -91,14 +92,19 @@ namespace GameFrameworkPackage
             }
         }
 
-        private void _OnBlurRenderEnd(RenderTexture a_rt)
+        private void _OnScreenShotBlurRenderEnd(RenderTexture a_rt)
         {
-            if (m_fnBlurCallback != null)
+            if (m_bScreenShotEffect)
             {
                 m_bScreenShotEffect = false;
-                m_fnBlurCallback.Invoke(a_rt);
-                m_fnBlurCallback = null;
                 this.enabled = false;
+            }
+
+            if (m_fnBlurCallback != null)
+            {
+                Action<RenderTexture> tempFn = m_fnBlurCallback;
+                m_fnBlurCallback = null;
+                tempFn.Invoke(a_rt);
             }
         }
 

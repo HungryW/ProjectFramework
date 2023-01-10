@@ -28,13 +28,17 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 94a3efce68b8b934a95c9e251b6c5561, type: 3}
-    totalSpriteSurfaceArea: 259276
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: e69214d00149e9a40979b37c1631bbc7, type: 3}
   - {fileID: 21300000, guid: 0238cf515e1420d45849e58f53d82dac, type: 3}
   - {fileID: 21300000, guid: 8d9eb46311f4ee14e8c1429ac809c2ef, type: 3}
   - {fileID: 21300000, guid: 2f969dd5d4948ce4393403dcdd9429c8, type: 3}
@@ -44,13 +48,15 @@ SpriteAtlas:
   - {fileID: 21300000, guid: fd6200eec8742b143b35d31037753217, type: 3}
   - {fileID: 21300000, guid: d24f5d5f5dfd6d8499732b531b03d63b, type: 3}
   m_PackedSpriteNamesToIndex:
+  - guanbi 1
   - logo
   - songshu
   - jindutiao_di
   - bg
   - shuzhuang
   - jindutiao_shangceng
-  - redButton 1
-  - lvanniu 1
+  - redButton
+  - lvanniu
+  m_RenderDataMap: {}
   m_Tag: ui
   m_IsVariant: 0

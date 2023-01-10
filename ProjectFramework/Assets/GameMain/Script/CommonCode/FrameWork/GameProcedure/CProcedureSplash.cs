@@ -35,7 +35,7 @@ namespace GameFrameworkPackage
             if (CGameEntryMgr.Base.EditorResourceMode)
             {
                 // 编辑器模式
-                ChangeState<CProcedurePreload>(procedureOwner);
+                ChangeState<CProcedureMain>(procedureOwner);
             }
             else if (CGameEntryMgr.Resource.ResourceMode == ResourceMode.Package)
             {

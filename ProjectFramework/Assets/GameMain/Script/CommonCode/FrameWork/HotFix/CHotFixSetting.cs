@@ -12,16 +12,21 @@ namespace GameFrameworkPackage
 {
     public static class CHotFixSetting
     {
+        public static string ms_szHotFixEntryNamespace = "HotFixEntry";
+        public static string ms_szHotFixLogicUINamespace = "Logic.UI";
+
         public static string ms_szHotFixRootPath = "Assets/GameMain/HotFix";
         public static string ms_szDllResSuffix = "bytes";
         public static string ms_szDllSuffix = "dll";
 
         public static string ms_szDllTypeHotFix = "HotFix";
         public static string ms_szDllTypeAOT = "AOT";
-        public static string[] ms_arrHotFixDllName = { "HotFixEntry"
-                                                       ,"Define"
+        public static string[] ms_arrHotFixDllName = {
+                                                        "Define"
+                                                       ,"HotFixEntry"
                                                        ,"HotFixLogic"
                                                      };
+
         public static string[] ms_arrAOTDllName = {  "mscorlib"
                                                     ,"System.Core"
                                                     ,"GameFramework"
@@ -29,9 +34,28 @@ namespace GameFrameworkPackage
                                                     ,"GameMain"
                                                   };
 
-        public static string GetHotFixEntryName()
+        public static string GetHotFixEntryClassFullName(string a_szClassName)
         {
-            return ms_arrHotFixDllName[0];
+            return _GetHotFixClassFullName(ms_szHotFixEntryNamespace, a_szClassName);
+        }
+
+        public static string GetHotFixLogicUIClassFullName(string a_szClassName)
+        {
+            return _GetHotFixClassFullName(ms_szHotFixLogicUINamespace, a_szClassName);
+        }
+
+        private static string _GetHotFixClassFullName(string a_szNameSpace, string a_szClassName)
+        {
+            return Utility.Text.Format("{0}.{1}", a_szNameSpace, a_szClassName);
+        }
+
+        public static string GetHotFixLogicDllName()
+        {
+            return ms_arrHotFixDllName[2];
+        }
+        public static string GetHotFixEntryDllName()
+        {
+            return ms_arrHotFixDllName[1];
         }
 
         public static string GetDllName(string a_szName)
@@ -44,12 +68,10 @@ namespace GameFrameworkPackage
             return Utility.Text.Format("{0}.{1}", GetDllName(a_szName), ms_szDllResSuffix);
         }
 
-        public static string GetDllResFullPathName(string a_szTypeName, string a_szName)
+        public static string GetDllResFullPathName(string a_szDllTypeName, string a_szName)
         {
-            return Utility.Text.Format("{0}/Dll/{1}/{2}", ms_szHotFixRootPath, a_szTypeName, GetDllResName(a_szName));
+            return Utility.Text.Format("{0}/Dll/{1}/{2}", ms_szHotFixRootPath, a_szDllTypeName, GetDllResName(a_szName));
         }
-
-
         public static string[] GetAllHotFixResFullPath()
         {
             return GetAllResFullPath(ms_szDllTypeHotFix, ms_arrHotFixDllName);
