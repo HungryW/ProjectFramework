@@ -26,7 +26,7 @@ namespace HotFixEntry
         protected override void OnEnter(IFsm<CGameStateMgr> a_fsm)
         {
             base.OnEnter(a_fsm);
-           
+            CHotFixEntry.UI.OpenUINoHideAnim(EUIFormID.UIMain);
         }
 
         protected override void OnUpdate(IFsm<CGameStateMgr> a_fsm, float elapseSeconds, float realElapseSeconds)
@@ -54,7 +54,7 @@ namespace HotFixEntry
             base._UnSubsribeEvent();
         }
 
-      
+
     }
 }
 

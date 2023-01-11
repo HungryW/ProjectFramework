@@ -47,17 +47,22 @@ namespace GameFrameworkPackage
         private static string _GetHotFixClassFullName(string a_szNameSpace, string a_szClassName)
         {
             return Utility.Text.Format("{0}.{1}", a_szNameSpace, a_szClassName);
-        }
 
-        public static string GetHotFixLogicDllName()
+        }
+        public static string GetHotFixDefineDllName()
         {
-            return ms_arrHotFixDllName[2];
+            return ms_arrHotFixDllName[0];
         }
         public static string GetHotFixEntryDllName()
         {
             return ms_arrHotFixDllName[1];
         }
 
+        public static string GetHotFixLogicDllName()
+        {
+            return ms_arrHotFixDllName[2];
+        }
+       
         public static string GetDllName(string a_szName)
         {
             return Utility.Text.Format("{0}.{1}", a_szName, ms_szDllSuffix);

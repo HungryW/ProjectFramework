@@ -49,8 +49,8 @@ namespace Tools
         {
             //todo
         }
-
         [MenuItem("MyTools/Protobuf/打开proto文件夹", false, 22)]
+
         public static void ViewInputDataPath()
         {
             //todo
@@ -62,11 +62,11 @@ namespace Tools
             //todo
         }
 
-        [MenuItem("MyTools/图集/按文件夹制作图集", false, 30)]
-        public static void CreateAtlasByAllFolders()
-        {
-            AtlasMaker.CreateAtlasByAllFolders();
-        }
+        //[MenuItem("MyTools/图集/按文件夹制作图集", false, 30)]
+        //public static void CreateAtlasByAllFolders()
+        //{
+        //    AtlasMaker.CreateAtlasByAllFolders();
+        //}
 
         [MenuItem("MyTools/图集/按文件夹递归制作图集", false, 31)]
         public static void CreateAtlasByAllFoldersRecursive()

@@ -7,20 +7,6 @@ namespace GameFrameworkPackage
     public static class CAssestPathUtility
     {
 
-        //热更新程序文件
-        public const string HotfixPath = "Assets/GameMain/HotFixDll";  //热更新路径
-        public const string HotfixDllName = "Game.Hotfix.dll.bytes";
-        public const string HotfixPdbName = "Game.Hotfix.pdb.bytes";
-        public const string HotfixDataTableListName = "DataTableList.txt";
-        public const string HotfixUISpriteListName = "UISpriteList.txt";
-        public const string HotfixLocalizationListName = "Localization.txt";
-
-        //获取热更新资源内置路径
-        public static string GetHotfixAsset(string assetName)
-        {
-            return Utility.Text.Format("{0}/{1}", HotfixPath, assetName);
-        }
-
         public static string GetConfigAsset(string assetName, bool fromBytes)
         {
             return Utility.Text.Format("Assets/GameMain/Configs/{0}.{1}", assetName, fromBytes ? "bytes" : "txt");
@@ -63,12 +49,12 @@ namespace GameFrameworkPackage
 
         public static string GetUIFormAsset(string assetName)
         {
-            return Utility.Text.Format("Assets/GameMain/UI/UIForms/{0}.prefab", assetName);
+            return Utility.Text.Format("Assets/GameMain/UI/{0}.prefab", assetName);
         }
 
         public static string GetUISoundAsset(string assetName)
         {
-            return Utility.Text.Format("Assets/GameMain/UI/UISounds/{0}.wav", assetName);
+            return Utility.Text.Format("Assets/GameMain/UISounds/{0}.wav", assetName);
         }
 
 

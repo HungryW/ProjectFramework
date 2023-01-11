@@ -26,10 +26,8 @@ namespace Tools
 
         public static void CreateAtlasByAllFolders()
         {
-            CreateAtlasByFolders(ms_szBaseSrcDir + "/UINew", ms_szBaseDesDir + "/UI");
+            CreateAtlasByFolders(ms_szBaseSrcDir + "/UI", ms_szBaseDesDir + "/UI");
             CreateAtlasByFolders(ms_szBaseSrcDir + "/UISprite", ms_szBaseDesDir + "/UISprite");
-            CreateAtlasByFolders(ms_szBaseSrcDir + "/Scenes/Battle/Tools", ms_szBaseDesDir + "/ScenesBattleTools");
-            CreateAtlasByFolders(ms_szBaseSrcDir + "/Scenes/MainScene", ms_szBaseDesDir + "/SceneMain");
         }
 
         static void CreateAtlasByFolders(string a_szSrcDir, string a_szDesDir)
@@ -52,8 +50,7 @@ namespace Tools
                     if (IsPackable(o))
                         folders.Add(o);
                 }
-                string atlasName = dirInfo.Name + ".spriteatlas";
-                SpriteAtlas sptAtlas = CreateAtlas(a_szDesDir, atlasName);
+                SpriteAtlas sptAtlas = CreateAtlas(a_szDesDir, dirInfo.Name);
                 Debug.Log(sptAtlas.tag);
                 AddPackAtlas(sptAtlas, folders.ToArray());
             }
@@ -64,7 +61,7 @@ namespace Tools
 
         public static void CreateAtlasByAllFoldersRecursive()
         {
-            _CreateAtlasByFoldersRecursive(ms_szBaseSrcDir + "/UINew", ms_szBaseDesDir + "/UI");
+            _CreateAtlasByFoldersRecursive(ms_szBaseSrcDir + "/UI", ms_szBaseDesDir + "/UI");
             _CreateAtlasByFoldersRecursive(ms_szBaseSrcDir + "/UISprite", ms_szBaseDesDir + "/UISprite");
         }
 
@@ -90,8 +87,7 @@ namespace Tools
                 string assetPath = rootDirInfo.FullName.Substring(rootDirInfo.FullName.IndexOf("Assets"));
                 var o = AssetDatabase.LoadAssetAtPath<DefaultAsset>(assetPath);
                 folders.Add(o);
-                string atlasName = a_szName + ".spriteatlas";
-                SpriteAtlas sptAtlas = CreateAtlas(a_szDesDir, atlasName);
+                SpriteAtlas sptAtlas = CreateAtlas(a_szDesDir, a_szName);
                 AddPackAtlas(sptAtlas, folders.ToArray());
             }
             else
@@ -107,8 +103,7 @@ namespace Tools
                     {
                         if (null == sptAtlas)
                         {
-                            string szAtlasName = a_szName + ".spriteatlas";
-                            sptAtlas = CreateAtlas(a_szDesDir, szAtlasName);
+                            sptAtlas = CreateAtlas(a_szDesDir, a_szName);
                         }
                         listTexture.Add(asset);
                     }
@@ -150,14 +145,14 @@ namespace Tools
 
         public static SpriteAtlas CreateAtlas(string a_szDesDir, string atlasName)
         {
-            string yaml = @"%YAML 1.1
+            string szYamlFormat = @"%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!687078895 &4343727234628468602
 SpriteAtlas:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: New Sprite Atlas
+  m_Name: {0}
   m_EditorData:
     textureSettings:
       serializedVersion: 2
@@ -189,56 +184,26 @@ SpriteAtlas:
   m_IsVariant: 0
 
 ";
+            string szContent = szYamlFormat.Replace("{0}", atlasName);
             AssetDatabase.Refresh();
             if (!Directory.Exists(a_szDesDir))
             {
                 Directory.CreateDirectory(a_szDesDir);
                 AssetDatabase.Refresh();
             }
-
-            string filePath = a_szDesDir + "/" + atlasName;
+            string filePath = a_szDesDir + "/" + atlasName + ".spriteatlas";
             if (File.Exists(filePath))
             {
                 File.Delete(filePath);
                 AssetDatabase.Refresh();
             }
             FileStream fs = new FileStream(filePath, FileMode.CreateNew);
-            byte[] bytes = new UTF8Encoding().GetBytes(yaml);
+            byte[] bytes = new UTF8Encoding().GetBytes(szContent);
             fs.Write(bytes, 0, bytes.Length);
             fs.Close();
             AssetDatabase.Refresh();
             string szFullPath = (filePath).Substring((filePath).IndexOf("Assets"));
             return AssetDatabase.LoadAssetAtPath<SpriteAtlas>(szFullPath);
         }
-
-        //[MenuItem("Tools/NewAtlasMaker By Sprite")]
-        //public static void CreateAtlasBySprite(string a_szSrcDir, string a_szDesDir)
-        //{
-        //    DirectoryInfo rootDirInfo = new DirectoryInfo(a_szSrcDir);
-
-        //    //add sprite
-
-        //    List<Sprite> spts = new List<Sprite>();
-        //    foreach (DirectoryInfo dirInfo in rootDirInfo.GetDirectories())
-        //    {
-        //        spts.Clear();
-        //        foreach (FileInfo pngFile in dirInfo.GetFiles("*.png", SearchOption.AllDirectories))
-        //        {
-        //            string allPath = pngFile.FullName;
-        //            string assetPath = allPath.Substring(allPath.IndexOf("Assets"));
-        //            Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(assetPath);
-        //            if (IsPackable(sprite))
-        //                spts.Add(sprite);
-        //        }
-        //        string atlasName = dirInfo.Name + ".spriteatlas";
-        //        SpriteAtlas sptAtlas = CreateAtlas(a_szDesDir, atlasName);
-        //        Debug.Log(sptAtlas.tag);
-        //        AddPackAtlas(sptAtlas, spts.ToArray());
-        //    }
-
-
-        //    //add texture by your self
-        //}
     }
-
 }

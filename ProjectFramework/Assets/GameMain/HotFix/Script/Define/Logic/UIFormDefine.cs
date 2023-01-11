@@ -4,12 +4,12 @@ namespace Defines
 	{
 		UICommonTextTip = 1,
 		UICommonConfirm = 2,
-		UICommonConfirmHaveCheckBox = 3,
-		UITipTxt = 4,
-		UICommonLoading = 5,
+		UITipTxt = 3,
+		UICommonLoading = 4,
+		UILoginMain = 5,
 		UINetWaitMsg = 6,
-		UILoginMain = 7,
-		UIConnectNet = 8,
-		UISetting = 9,
+		UIConnectNet = 7,
+		UISetting = 8,
+		UIMain = 9,
 	}
 }

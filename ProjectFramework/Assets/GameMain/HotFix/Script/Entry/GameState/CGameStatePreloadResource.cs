@@ -225,8 +225,7 @@ namespace HotFixEntry
 
         private void _LoadFonts()
         {
-            _LoadFont("main.ttf");
-            _LoadFont("light.ttf");
+
         }
 
         private void _LoadUISprites()
@@ -298,8 +297,9 @@ namespace HotFixEntry
 
         private void _LoadDictionary(string dictionaryName)
         {
-            m_LoadedFlag.Add(Utility.Text.Format("Dictionary.{0}", dictionaryName), false);
-            CGameEntryMgr.Localization.LoadDictionary(dictionaryName, this);
+            string szFileFullName = CAssestPathUtility.GetDictionaryAsset(dictionaryName, false);
+            m_LoadedFlag.Add(Utility.Text.Format("Dictionary.{0}", szFileFullName), false);
+            CGameEntryMgr.Localization.LoadDictionary(szFileFullName, this);
         }
 
 
@@ -309,8 +309,8 @@ namespace HotFixEntry
             {
                 return;
             }
-            m_LoadedFlag.Add(Utility.Text.Format("DataTable.{0}", dataTableName), false);
             string szAssetName = CAssestPathUtility.GetDataTableAsset(dataTableName, false);
+            m_LoadedFlag.Add(Utility.Text.Format("DataTable.{0}", szAssetName), false);
             CGameEntryMgr.DataTable.LoadDataTable(dataTableName, szAssetName, this);
         }
 

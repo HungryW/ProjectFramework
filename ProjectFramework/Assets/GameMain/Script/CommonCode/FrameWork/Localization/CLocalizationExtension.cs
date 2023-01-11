@@ -5,14 +5,14 @@ namespace GameFrameworkPackage
 {
     public static class LocalizationExtension
     {
-        public static void LoadDictionary(this LocalizationComponent a_component, string a_szFileName, object a_oUserData)
+        public static void LoadDictionary(this LocalizationComponent a_component, string a_szFileFullName, object a_oUserData)
         {
-            if (string.IsNullOrEmpty(a_szFileName))
+            if (string.IsNullOrEmpty(a_szFileFullName))
             {
                 Log.Warning("Dictionary name is invalid.");
                 return;
             }
-            CGameEntryMgr.Localization.ReadData(a_szFileName, a_oUserData);
+            CGameEntryMgr.Localization.ReadData(a_szFileFullName, a_oUserData);
         }
 
         public static string GetStringEX(this LocalizationComponent a_component, string a_szKey)

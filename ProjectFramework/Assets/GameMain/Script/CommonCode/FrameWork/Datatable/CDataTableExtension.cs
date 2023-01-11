@@ -2,13 +2,14 @@
 using GameFramework.DataTable;
 using UnityGameFramework.Runtime;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace GameFrameworkPackage
 {
 
     public static class CDataTableExtension
     {
-        private const string DataRowClassPrefixName = "Defines.DataTable.DR";
+        private const string DataRowClassPrefixName = "Defines.DR";
         private static readonly string[] ColumnSplit = new string[] { "∮" };
 
         public static void LoadDataTable(this DataTableComponent dataTableComponent, string dataTableName, string dataTableAssetName, object userData)
@@ -27,7 +28,8 @@ namespace GameFrameworkPackage
             }
 
             string dataRowClassName = DataRowClassPrefixName + splitedNames[0];
-            Type dataRowType = Type.GetType(dataRowClassName);
+            Assembly assDefine = CGameEntryMgr.HotFixComponent.GetAsmByName(CHotFixSetting.GetHotFixDefineDllName());
+            Type dataRowType = assDefine.GetType(dataRowClassName);
             if (dataRowType == null)
             {
                 Log.Warning("Can not get data row type with class name '{0}'.", dataRowClassName);

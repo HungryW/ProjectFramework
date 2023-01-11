@@ -52,13 +52,14 @@ namespace GameFrameworkPackage
             }
             m_AgentHotFixUI = (CHotFixUILogicAgentBase)CGameEntryMgr.HotFixComponent.CreateHotFixInstance(param.m_szUILogicDllName, param.m_szUILogicClassName, null);
             m_AgentHotFixUI.Init(this, param.m_oUserData);
-            COpenHotFixLogicUIParam.Del(param);
         }
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
-            m_AgentHotFixUI.OnOpen(userData);
+            COpenHotFixLogicUIParam param = userData as COpenHotFixLogicUIParam;
+            m_AgentHotFixUI.OnOpen(param.m_oUserData);
+            COpenHotFixLogicUIParam.Del(param);
         }
         protected override void OnClose(bool isShutdown, object userData)
         {

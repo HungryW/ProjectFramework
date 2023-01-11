@@ -38,7 +38,6 @@ namespace HotFixEntry
         protected override void OnEnter(IFsm<CGameStateMgr> a_fsm)
         {
             base.OnEnter(a_fsm);
-            CHotFixEntry.Sound.PlayMusic(GetBGMId());
             CGameEntryMgr.Event.Fire(null, ReferencePool.Acquire<CEventImmediateGameStateEnterArgs>().Fill(GetStateId()));
             CGameEntryMgr.Event.Fire(null, ReferencePool.Acquire<CEventGameStateEnterArgs>().Fill(GetStateId()));
         }

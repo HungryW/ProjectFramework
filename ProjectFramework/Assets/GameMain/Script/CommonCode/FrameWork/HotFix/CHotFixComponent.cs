@@ -145,8 +145,11 @@ namespace GameFrameworkPackage
                 {
                     string szErrorMsg = Utility.Text.Format("_InitHotFixDllInEditor Fail Dll = {0}", szDllName);
                     _OnEnterHotFixFail(szErrorMsg);
+                    return;
                 }
             }
+            _EnterHotFix();
+
         }
 
         private Assembly _GetHotFixAssInEditor(string a_szDllName)
@@ -166,7 +169,7 @@ namespace GameFrameworkPackage
         {
             Log.Fatal("EnterHotFixFail Msg = {0}", a_szErrorMsg);
         }
-        private Assembly _GetAsmByName(string a_szDllName)
+        public Assembly GetAsmByName(string a_szDllName)
         {
             if (m_mapHotFixAss.ContainsKey(a_szDllName))
             {
@@ -178,11 +181,11 @@ namespace GameFrameworkPackage
             }
         }
 
-       
+
 
         public void InvokeHotFixStaticMethod(string a_szDllName, string a_szClassFullName, string a_szMethodName)
         {
-            Assembly asm = _GetAsmByName(a_szDllName);
+            Assembly asm = GetAsmByName(a_szDllName);
             if (asm == null)
             {
                 Log.Warning("InvokeHotFixStaticMethod Fail Dll is Null DllName={0} ClassFullName={1} a_szMethodName = {2}", a_szDllName, a_szClassFullName, a_szMethodName);
@@ -206,7 +209,7 @@ namespace GameFrameworkPackage
 
         public object CreateHotFixInstance(string a_szDllName, string a_szClassFullName, params object[] args)
         {
-            Assembly asm = _GetAsmByName(a_szDllName);
+            Assembly asm = GetAsmByName(a_szDllName);
             if (asm == null)
             {
                 Log.Warning("CreateHotFixInstance Fail Dll is Null DllName={0} ClassFullName={1}", a_szDllName, a_szClassFullName);

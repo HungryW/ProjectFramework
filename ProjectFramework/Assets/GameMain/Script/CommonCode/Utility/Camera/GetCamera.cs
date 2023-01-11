@@ -27,14 +27,5 @@ namespace GameFrameworkPackage
             }
             return ms_CameraScene;
         }
-
-        public static Camera GetBlurCamera()
-        {
-            if (ms_CameraBlur == null)
-            {
-                ms_CameraBlur = CGameEntryMgr._Instance.transform.Find("BlurCamera").GetComponent<Camera>();
-            }
-            return ms_CameraBlur;
-        }
     }
 }

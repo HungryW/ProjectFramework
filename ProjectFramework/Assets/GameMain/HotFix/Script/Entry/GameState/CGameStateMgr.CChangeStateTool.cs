@@ -8,6 +8,7 @@ using Defines;
 using UnityGameFramework.Runtime;
 using System;
 using DG.Tweening;
+using HotFixEntry.UI;
 
 namespace HotFixEntry
 {

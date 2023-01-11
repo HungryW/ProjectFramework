@@ -28,9 +28,17 @@ namespace HotFixEntry
         {
             CAnalyticsMainProject.Instance.LogGameProgress("StartLogin", "", null);
             base.OnEnter(a_fsm);
-            CGameEntryMgr.UI.CloseAllUIByGroupName("Default");
             CGameEntryMgr.PreloadComponent.SetBgVisible(true);
-            //CGameEntryMgr.UI.OpenHotUIForm(EUIFormID.UILoginMain);
+            CHotFixEntry.UI.CloseAllUIByGroupName("Default");
+            COpenParamCommonConfirm param = new COpenParamCommonConfirm(CHotFixEntry.Localization.GetStringEX("Im Login UI"));
+            param.SetConfirmCallback(() =>
+            {
+                CChangeGameStateParam paramChangeState = new CChangeGameStateParam();
+                paramChangeState.SetNextGameState(EGameStateID.CGameStateMain);
+                paramChangeState.SetUIType(ELoadingUIType.BlackFade);
+                CHotFixEntry.GameStateMgr.ChangeState(paramChangeState);
+            });
+            CHotFixEntry.UI.OpenUINoHideAnim(EUIFormID.UICommonConfirm, param);
         }
 
         protected override void OnUpdate(IFsm<CGameStateMgr> a_fsm, float elapseSeconds, float realElapseSeconds)

@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Dictionaries>
+  <Dictionary Language="English">
+    <String Key="BattleBuffSpecialStateDesc_Silence" Value="The current grid cannot be activated, and the silent state will be eliminated after three rounds" />
+    <String Key="BattleBuffSpecialStateDesc_Bind" Value="The current grid cannot be activated, and the entangled state is eliminated after activating adjacent grids of the same type" />
+    <String Key="BattleBuffSpecialStateDesc_Freeze" Value="Unable to activate the current grid, click to clear the frozen state" />
+    <String Key="BattleBuffSpecialStateDesc_Flame" Value="Inflict burning damage every round, and the burning status will be eliminated after 3 rounds" />
+    <String Key="BattleBuffLifeDesc_ClickGrid" Value="After clicking the grid {0} times" />
+    <String Key="BattleBuffLifeDesc_NearHostAndSameType" Value="After adjacent grids of the same type are triggered" />
+    <String Key="BattleBuffLifeDesc_NearHost" Value="After the adjacent grid is triggered" />
+    <String Key="BattleBuffLifeDesc_Bout" Value="After {0} rounds" />
+    <String Key="BattleBuffLifeDesc_EffectTime" Value="After triggering {0} times" />
+    <String Key="BattleHeroIdxDesc" Value="{0} photomons remaining" />
+    <String Key="BattleAutoChangeHeroDesc" Value="Change photomon after {0} rounds" />
+    <String Key="BattleMonsterSkillDesc" Value="Attack after {0} rounds, {1}" />
+    <String Key="BattleCurEnergyDesc" Value="Each active grid increases {0} energy" />
+    <String Key="BattleCombo" Value="COMBO X{0}" />
+    <String Key="Wave Info" Value="Wave·{0}/{1}" />
+    <String Key="Delete" Value="Delete" />
+    <String Key="TestGamePlayStart" Value="thanks for your time, it's our pleasure to have you here &#xA;The following experience is only a test version and does not represent the final quality of the game. Please keep the game content confidential and do not share it in any channel." />
+    <String Key="TestGamePlay" Value="This trial is over, please look forward to the official version" />
+    <String Key="Desc" Value="illustrate" />
+    <String Key="Menu.SettingButton" Value="set up" />
+    <String Key="Start" Value="start" />
+    <String Key="Pause" Value="pause" />
+    <String Key="QuitButton" Value="quit" />
+    <String Key="SaveSuccess" Value="Successfully saved" />
+    <String Key="TipSaveChange" Value="save changes?" />
+    <String Key="Lv" Value="Lv.{0}" />
+    <String Key="Exp" Value="experience" />
+    <String Key="Energy" Value="Energy" />
+    <String Key="State" Value="state" />
+    <String Key="Achieve" Value="achieved" />
+    <String Key="UnAchieve" Value="unacommpolished" />
+    <String Key="LvMax" Value="Max level" />
+    <String Key="NoBody" Value="none" />
+    <String Key="Protagonist" Value="Protagonist" />
+    <String Key="OnlyLv" Value="level" />
+    <String Key="Atk" Value="attack" />
+    <String Key="Def" Value="Defense" />
+    <String Key="Hp" Value="HP" />
+    <String Key="Crit" Value="crit" />
+    <String Key="CritAtk" Value="crit damage" />
+    <String Key="MaxGrade" Value="highest class" />
+    <String Key="MaxLv" Value="highest level" />
+    <String Key="Quality" Value="quality" />
+    <String Key="FightVal" Value="combat power" />
+    <String Key="TagLockName" Value="? ? ?" />
+    <String Key="TagLockDesc" Value="? ? ?" />
+    <String Key="NoSaveGame" Value="No Save" />
+    <String Key="AskQuitGame.Title" Value="confirm exit" />
+    <String Key="AskQuitGame.Message" Value="Quit the game?" />
+    <String Key="Setting.UISound" Value="interface sound" />
+    <String Key="Setting.LanguageTips" Value="Changing the language requires restarting the game" />
+    <String Key="ClassTechFinish" Value="【{0}】Complete" />
+    <String Key="Net_Not_Connected" Value="no internet" />
+    <String Key="CheckNet" Value="Unable to connect to the network, please check if you are connected to the Internet" />
+    <String Key="Server Close" Value="disconnectted" />
+    <String Key="Server Connecting" Value="Connecting to server...{0}" />
+    <String Key="FunNotOpen" Value="under construction~" />
+    <String Key="nongchang" Value="farm" />
+    <String Key="jishe" Value="chicken coop" />
+    <String Key="mofang" Value="mill" />
+    <String Key="pengren" Value="cooking" />
+    <String Key="Bag" Value="Backpack" />
+    <String Key="Hero" Value="photomon" />
+    <String Key="Dialog" Value="dialogue" />
+    <String Key="Task" Value="Task" />
+    <String Key="Team_title" Value="formation" />
+    <String Key="Export" Value="outdoor" />
+    <String Key="Home" Value="indoor" />
+    <String Key="Clue" Value="Achievement" />
+    <String Key="Mail" Value="mail" />
+    <String Key="Explore" Value="explore" />
+    <String Key="Order" Value="Order" />
+    <String Key="Shop" Value="shop" />
+    <String Key="Draw" Value="dark&#xA;room" />
+    <String Key="gold" Value="gold" />
+    <String Key="diamond" Value="diamond" />
+    <String Key="wood" Value="wood" />
+    <String Key="film" Value="roll film" />
+    <String Key="acctime" Value="timer" />
+    <String Key="heroexp" Value="exp dust" />
+    <String Key="goldDesc" Value="I am only useful in a troubled world" />
+    <String Key="diamondDesc" Value="I am the iconic product of the lies of the diamond capitalist" />
+    <String Key="woodDesc" Value="I am the main resource for the timber island nation" />
+    <String Key="energyDesc" Value="I am energy" />
+    <String Key="acctimeDesc" Value="I am timer" />
+    <String Key="MonsterSkillReleaseLeftBout" Value="After {0} rounds" />
+    <String Key="MonsterSkillReleaseCurBout" Value="this round" />
+    <String Key="Unlock" Value="X" />
+    <String Key="FINISH" Value="FINISH" />
+    <String Key="PlayerConditionDescPlayerLv" Value="Player reached level {0}" />
+    <String Key="PlayerConditionDescBuildedBuildGroup" Value="{0} construction completed" />
+    <String Key="PlayerConditionDescBuildLv" Value="{0} reached level {1}" />
+    <String Key="PlayerConditionDescFinishTaskGroup" Value="{0} done" />
+    <String Key="PlayerConditionDescFinishTaskLevel" Value="{0} done" />
+    <String Key="PlayerConditionDescProduceItemNum" Value="Produced {1} {0}" />
+    <String Key="PlayerConditionDescUseItemNum" Value="Accumulated use of {1} {0}" />
+    <String Key="PlayerConditionDescHeroGradeTime" Value="The photomon has completed a total of {0} evolves" />
+    <String Key="PlayerConditionDescHeroLv" Value="Any photomon reaches level {0}" />
+    <String Key="PlayerConditionDescHeroQualityNum" Value="Has {1} {0} quality photomons" />
+    <String Key="PlayerConditionDescHeroNum" Value="The total number of cumulative photomons exceeds {0}" />
+    <String Key="PlayerConditionDescMonsterKill" Value="Cumulatively killed more than {0} monsters" />
+    <String Key="PlayerConditionDescDrawCardTime" Value="Accumulated card draw {0} times" />
+    <String Key="PlayerConditionDescOrderNum" Value="Completed {0} orders" />
+    <String Key="PlayerConditionBingdingAccount" Value="Bind fb/google account" />
+    <String Key="PlayerConditionOderGoldNum" Value="Order accumulated to earn {0} gold coins" />
+    <String Key="PlayerUnlockOrderItem" Value="Unlock order type {0}" />
+    <String Key="OrderDelCdDesc" Value="Refresh after {0}" />
+    <String Key="OrderSlotEmptyDesc" Value="no order" />
+    <String Key="OrderFinishItemLack" Value="lack of resources" />
+    <String Key="ProduceStartFail" Value="Can't produce" />
+    <String Key="ProduceUnlockSlotComfirm" Value="Confirm unlock" />
+    <String Key="BuildUnlockLackRes" Value="lack of resources" />
+    <String Key="BuildLvUpError" Value="cannot be upgraded" />
+    <String Key="BuildLvUpErrorNotFitCondition" Value="You can only upgrade after the protagonist's level reaches {0}." />
+    <String Key="BuildLvUpErrorLackRes" Value="lack of resources" />
+    <String Key="BuildLvUpErrorMaxLV" Value="max level reached" />
+    <String Key="HeroLvUpErrorMaxLv" Value="photomon level cap reached" />
+    <String Key="HeroLvUpErrorNeedUpGrade" Value="You need to upgrade your photomon rank before you can continue to upgrade" />
+    <String Key="HeroLvUpErrorLackRes" Value="Insufficient material" />
+    <String Key="HeroFastUpLvComfirm" Value="Whether to quickly upgrade to level {0}" />
+    <String Key="HeroGradeUpErrorMaxGrade" Value="photomon tier limit reached" />
+    <String Key="HeroGradeUpErrorLackRes" Value="Insufficient props required" />
+    <String Key="HeroBadgeLvUpNeed" Value="Next level: At least &lt;color=#ffe752&gt;({0}/{1})&lt;/color&gt; photomons have reached the level of &lt;color=#ffe752&gt;{2}&lt;/color&gt;" />
+    <String Key="HeroBadgeLvUpAfter" Value="After the upgrade, there are {0} photomons who can reach level {1}" />
+    <String Key="HeroBadgeLvUpTip" Value="The rest of the photomons are directly upgraded to level &lt;color=#ffe752&gt;{1}&lt;/color&gt;" />
+    <String Key="PerTime" Value="Per {0}" />
+    <String Key="EnergyBuy_BuyTimeDesc" Value="Remaining purchases today&lt;color=#ffe752&gt;({0}/{1})&lt;/color&gt;" />
+    <String Key="EnergyBuy_MaxTime" Value="The maximum number of stamina purchased today has been reached" />
+    <String Key="BagLongPressToSpeedUp" Value="hold to quickly add" />
+    <String Key="LvUpEventShow" Value="Congratulations on reaching level {0}" />
+    <String Key="TeamHasNoHero" Value="please add a photomon" />
+    <String Key="NotChooseChest" Value="No treasure chest selected!" />
+    <String Key="RenameError_Empty" Value="name cannot be empty" />
+    <String Key="RenameError_Len" Value="wrong length" />
+    <String Key="RenameError_ForbiddenWord" Value="Name contains illegal combination" />
+    <String Key="EnterDungeonErrNotEnough" Value="Insufficient physical strength!" />
+    <String Key="ChangeLanguageTipDesc" Value="Change the language to {0}, it will take effect after restarting the game" />
+    <String Key="ChangeLanguageTipRestart" Value="You changed the language setting, do you want to reboot now?" />
+    <String Key="RestartImmediately" Value="reboot now" />
+    <String Key="RestartDelay" Value="reboot later" />
+    <String Key="DropType_1" Value="clown camera" />
+    <String Key="HeroQualityGrade_1" Value="elite" />
+    <String Key="HeroQualityGrade_2" Value="rare" />
+    <String Key="HeroQualityGrade_3" Value="legend" />
+    <String Key="HeroFeature_1000" Value="physics" />
+    <String Key="HeroFeature_1001" Value="fire" />
+    <String Key="HeroFeature_1002" Value="water" />
+    <String Key="HeroFeature_1003" Value="Grass" />
+    <String Key="HeroFeature_1004" Value="spell" />
+    <String Key="mediaName_1" Value="newspaper" />
+    <String Key="mediaName_2" Value="radio" />
+    <String Key="mediaName_3" Value="television" />
+    <String Key="mediaText_1" Value="Wait for the show to play" />
+    <String Key="mediaText_2" Value="Wait for the show to play" />
+    <String Key="mediaText_3" Value="Wait for the show to play" />
+    <String Key="Mail_title" Value="MAIL" />
+    <String Key="Setting_title" Value="SETTINGS" />
+    <String Key="Music_setting" Value="MUSIC" />
+    <String Key="Sound_setting" Value="SOUND EFFECT" />
+    <String Key="Language_setting" Value="LANGUAGE" />
+    <String Key="Account_setting" Value="ACCOUNT" />
+    <String Key="Agreement_setting" Value="agreement" />
+    <String Key="Id_setting" Value="ID:{0}" />
+    <String Key="Swichuser_setting" Value="swichuser" />
+    <String Key="Battlepass_name" Value="battlepass" />
+    <String Key="Shop_name" Value="shop" />
+    <String Key="home_name" Value="home" />
+    <String Key="Order_name" Value="Order" />
+    <String Key="Explore_name" Value="Explore" />
+    <String Key="Shop_title" Value="SHOP" />
+    <String Key="ORDER_title" Value="Order" />
+    <String Key="ORDER_material" Value="ordermaterial" />
+    <String Key="ORDER_reward" Value="orderreward" />
+    <String Key="refresh_txt" Value="PLEASE WAIT" />
+    <String Key="Explore_title" Value="Explore" />
+    <String Key="Explore_award" Value="award" />
+    <String Key="QuitDungeon" Value="QuitDungeon" />
+    <String Key="title_PRODUCT" Value="product" />
+    <String Key="product_title" Value="product" />
+    <String Key="PRODUCT" Value="PRODUCT" />
+    <String Key="jishe_title" Value="chicken coop" />
+    <String Key="mofang_title" Value="mill" />
+    <String Key="chufang_title" Value="kitchen" />
+    <String Key="fengxiang_title" Value="beehive" />
+    <String Key="Unlock_txt1" Value="Unlock On Building LV 2" />
+    <String Key="Unlock_txt2" Value="Unlock On Building LV 3" />
+    <String Key="Unlock_txt3" Value="Unlock On Building LV 4" />
+    <String Key="Unlock_txt4" Value="Unlock On Building LV 5" />
+    <String Key="task_name" Value="TASK" />
+    <String Key="achievement_name" Value="ACHIEVENT" />
+    <String Key="hero_name" Value="Photomon" />
+    <String Key="bag_name" Value="BAG" />
+    <String Key="draw_name" Value="draw" />
+    <String Key="outside_name" Value="OUTSIDE" />
+    <String Key="achievement_title" Value="ACHIEVENT" />
+    <String Key="receive_btn" Value="receive" />
+    <String Key="go_btn" Value="go" />
+    <String Key="hero_title" Value="Photomon" />
+    <String Key="basic_name" Value="BASIC" />
+    <String Key="hp_name" Value="HP" />
+    <String Key="atk_name" Value="ATK" />
+    <String Key="def_name" Value="DEF" />
+    <String Key="critatk_name" Value="CRITATK" />
+    <String Key="crit_name" Value="CRIT" />
+    <String Key="upgrade_btn" Value="upgrade" />
+    <String Key="update_title" Value="evolve" />
+    <String Key="update_btn" Value="evolve" />
+    <String Key="update_txt" Value="Evolve can greatly break through combat attributes, and photomons can rise to higher levels" />
+    <String Key="upgrade_change1" Value="ATK+{0}" />
+    <String Key="upgrade_change2" Value="DEF+{0}" />
+    <String Key="upgrade_change3" Value="H P+{0}" />
+    <String Key="badge_title" Value="UPGRADE TO LV{0}" />
+    <String Key="badge_text" Value="Next level: At least ({0}/{1}) photomons reach level {2}" />
+    <String Key="tap_return" Value="taptoreturn" />
+    <String Key="update_change1" Value="BLOOD" />
+    <String Key="update_change2" Value="DEFENCE" />
+    <String Key="update_change3" Value="ATTACK" />
+    <String Key="task_title" Value="task" />
+    <String Key="task_gamepoint1" Value="photographdesc" />
+    <String Key="name_title" Value="name" />
+    <String Key="name_txt" Value="PLEASE ENTER YOUR NAME" />
+    <String Key="entername_txt" Value="entername" />
+    <String Key="draw_title" Value="draw" />
+    <String Key="draw_one" Value="draw a card" />
+    <String Key="draw_ten" Value="draw ten card" />
+    <String Key="entername" Value="Enter Name..." />
+    <String Key="yes" Value="YES" />
+    <String Key="cancle" Value="CANCLE" />
+    <String Key="reset" Value="RESET" />
+    <String Key="auto" Value="AUTO" />
+    <String Key="Add_txt" Value="Add&#xA;Photomons" />
+    <String Key="LOKED_txt" Value="Locked" />
+    <String Key="go" Value="GO" />
+    <String Key="receive" Value="RECEIVE" />
+    <String Key="pressanykeytocontinue" Value="Click anywhere to continue" />
+    <String Key="all" Value="ALL" />
+    <String Key="sell" Value="SELL" />
+    <String Key="use" Value="USE" />
+    <String Key="MAKE" Value="MAKE" />
+    <String Key="gobattle" Value="GO BATTLE" />
+    <String Key="justwin" Value="JUST WIN" />
+    <String Key="UPGRADE" Value="UPGRADE" />
+    <String Key="basic" Value="BASIC" />
+    <String Key="taptoreturn" Value="TAP TO RETURN" />
+    <String Key="ordermaterial" Value="ORDER MATERIAL" />
+    <String Key="orderreward" Value="ORDER REWARD" />
+    <String Key="ok" Value="OK" />
+    <String Key="battlepass" Value="BATTLEPASS" />
+    <String Key="agreement" Value="AGREEMENT" />
+    <String Key="swichuser" Value="SWICH USER" />
+    <String Key="cancel" Value="Cancel" />
+    <String Key="confirm" Value="CONFIRM" />
+    <String Key="award" Value="AWARD" />
+    <String Key="photographdesc" Value="Swipe both sides to focus" />
+    <String Key="deleteall" Value="DELETE ALL" />
+    <String Key="receiveall" Value="RECEIVE ALL" />
+    <String Key="change" Value="change" />
+    <String Key="FIGHT" Value="FIGHTING" />
+    <String Key="taskbattle_title" Value="Preparation" />
+    <String Key="SPEED ALL" Value="SPEED ALL" />
+    <String Key="SPEED" Value="SPEED" />
+    <String Key="UPGRADECOST_txt" Value="UPGRADE COST" />
+    <String Key="buildLvUpUnlockDesc" Value="LEVEL {0} UNLOCK" />
+    <String Key="SpeedUpComfirmTitle" Value="SpeedUp" />
+    <String Key="build" Value="Build" />
+    <String Key="complete" Value="complete" />
+    <String Key="title_hero" Value="Photomon" />
+    <String Key="HeroUpgradeToLv" Value="UPGRADE TO LV{0}" />
+    <String Key="YOUR TURN" Value="YOUR TURN" />
+    <String Key="Free" Value="Free" />
+    <String Key="ExitBattle" Value="ExitBattle" />
+    <String Key="Fighting_btn" Value="FIGHTING" />
+    <String Key="CONFIRM" Value="CONFIRM" />
+    <String Key="Suppressed" Value="Suppressed" />
+    <String Key="BeSuppressed" Value="BeSuppressed" />
+    <String Key="LogoutOutConfirm" Value="Whether to log out" />
+    <String Key="TipNetErrorRestart" Value="Network error, please check the network connection and restart the game" />
+    <String Key=" NetDisConnected" Value="no internet connection" />
+    <String Key="HaveNoBranchTask" Value="Complete missions to find more hidden stories" />
+    <String Key="Selected" Value="Selected" />
+    <String Key="ThreeChoiceTitle" Value="battle reward" />
+    <String Key="LoginErrorUser" Value="Login failed, account verification error, error code ({0})" />
+    <String Key="LoginErrorSeverFull" Value="Login failed, the server is full, error code ({0})" />
+    <String Key="LoginErrorSever " Value="Login failed, server is busy, error code ({0})" />
+    <String Key="gameProgress" Value="Get gold coins" />
+    <String Key="Prodution" Value="Production" />
+    <String Key="explore_desc" Value="Explore to get resources" />
+    <String Key="producton_desc" Value="Items required for the production order" />
+    <String Key="order_desc" Value="Submit an order and get rewarded" />
+    <String Key="Miracle" Value="Miracle" />
+    <String Key="miracle_title" Value="Miracle" />
+    <String Key="miracle_update" Value="update" />
+    <String Key="trader_goods" Value="KANGAROO'S CARGO" />
+    <String Key="my_goods" Value="MY GOODS" />
+    <String Key="miracle_product" Value="PRODUCTION" />
+    <String Key="miracle_upgradeinfo" Value="CONSUME" />
+    <String Key="BuildTaskCantConsume" Value="Need more resources to build" />
+    <String Key="speed_event" Value="Speed up!" />
+    <String Key="MiracleBuildUpgradeCantConsume" Value="Need more resources to upgrade" />
+    <String Key="MiracleTaskCantConsume" Value="Need more resources to build" />
+    <String Key="miracleshop_title" Value="KANGAROO SHOP" />
+    <String Key="exchange_title" Value="Let's make a deal!" />
+    <String Key="miracle_deal" Value="Deal" />
+    <String Key="miracleshop_tip" Value="Kangaroo will leave after the transaction is completed" />
+    <String Key="MiracleSpeedEventDesc" Value="TO GET &lt;color=#FFE752&gt;{0}h&lt;/color&gt; RESOURCES IMMEDIATELY" />
+    <String Key="MiracleShopDealCantConsume" Value="Need more resources" />
+    <String Key="media_title" Value="Radio station" />
+    <String Key="branchTask" Value="side quests" />
+    <String Key="mail_none" Value="hoo" />
+    <String Key="no_mail_tip" Value="no mail" />
+    <String Key="miracle_speed_up" Value="speed up" />
+    <String Key="MediaHasProgramPlaying" Value="The show is playing..." />
+    <String Key="Media_routine" Value="Regular rewards" />
+    <String Key="Media_extra" Value="Extra rewards" />
+    <String Key="Media_receive" Value="RECEIVE" />
+    <String Key="Miracle_receive" Value="RECEIVE" />
+    <String Key="GoogleLogin" Value="Google&#xA;Login" />
+    <String Key="FacebookLogin" Value="Facebook&#xA;Login" />
+    <String Key="GuestLogin" Value="Guest&#xA;Login" />
+    <String Key="UserIdDesc" Value="User ID:{0}" />
+    <String Key="SettingUserId" Value="User ID" />
+    <String Key="Copy" Value="Copy" />
+    <String Key="BuyShopGoodsConfirm" Value="Whether it costs &lt;color=#FFE752&gt;{0}{1}&lt;/color&gt;&#xA;Buy &lt;color=#FFE752&gt;{2}x{3}&lt;/color&gt;" />
+    <String Key="PathLockedForNow" Value="locked for now" />
+    <String Key="miracle_shop_tip" Value="See you next time!" />
+    <String Key="TopTipCanFinishOrder" Value="You can complete an order!" />
+    <String Key="TopTipCanFinishTask" Value="You can finish the task!" />
+    <String Key="ConditionNotFit" Value="Exploration mission not completed" />
+    <String Key="taptocontinue" Value="Click to continue" />
+    <String Key="MonsterDescTitle" Value="new monster" />
+    <String Key="GridStatusDescTitle" Value="special status" />
+    <String Key="BattleBuffSpecialStateName_Silence" Value="silence" />
+    <String Key="BattleBuffSpecialStateName_Bind" Value="twine" />
+    <String Key="BattleBuffSpecialStateName_Freeze" Value="frozen" />
+    <String Key="BattleBuffSpecialStateName_Flame" Value="burn" />
+    <String Key="Combo" Value="Combo" />
+    <String Key="ComboDescTitle" Value="Combo" />
+    <String Key="ComboDescTip1" Value="Tips: Activating multiple grids of the same type at the same time can achieve a combo effect" />
+    <String Key="ComboDescGrid" Value="Activate the same type of grid" />
+    <String Key="ComboDescCombo" Value="achieve combo effect" />
+    <String Key="ComboDescEffect" Value="Increased damage and extra turns" />
+    <String Key="ComboDescTip2" Value="Tips: The more combos you achieve, the higher the bonus effect and the more rounds you increase." />
+    <String Key="GridFT1" Value="Attack class" />
+    <String Key="GridFT2" Value="Auxiliary class" />
+    <String Key="DescGridTxtType" Value="type" />
+    <String Key="DescGridTxtEffect" Value="describe" />
+    <String Key="MainScene" Value="papa camp" />
+    <String Key="get_ReenterReward" Value="Going to the explored area again can get the resources directly" />
+    <String Key="ExploreEventEffect_SubBout" Value="Decrease current photomon rounds" />
+    <String Key="SquidInk" Value="Octopus appears!" />
+    <String Key="ExploreEventEffect_StealItem" Value="Prop Stolen!" />
+    <String Key="Ghost" Value="The ghost thief is here!" />
+    <String Key="ExploreEventEffect_AddCurHp" Value="Current photomon restores HP" />
+    <String Key="Elfin" Value="Found a pixie!" />
+    <String Key="ExploreEventEffect_SubAllHp" Value="All photomons reduce blood volume" />
+    <String Key="Poison" Value="The poison was knocked over!" />
+    <String Key="broadCast" Value="paparazzi radio" />
+    <String Key="broad_cast_name" Value="paparazzi radio" />
+    <String Key="BulletScreen_NewFansComing" Value="A new wave of fans arrives" />
+    <String Key="BulletScreen_FamousFollower" Value="&lt;color=#10F1FF&gt;{0}&lt;/color&gt;&lt;color=#FFE752&gt; followed you&lt;/color&gt; " />
+    <String Key="Emotion" Value="Emotion" />
+    <String Key="emotion_uplv" Value="resonance" />
+    <String Key="HeroEmotionLvUpErrorLackRes" Value="Not enough items" />
+    <String Key="HeroEmotionLvUpErrorAllMaxLv" Value="Emotions have reached the full level" />
+    <String Key="HeroEmotionLvUpErrorNeedUpLv" Value="Need to upgrade partner level" />
+    <String Key="hero_emotion_title" Value="Emotion" />
+    <String Key="Emotion1" Value="sad" />
+    <String Key="Emotion2" Value="joy" />
+    <String Key="Emotion3" Value="cunning" />
+    <String Key="Emotion4" Value="panic" />
+    <String Key="Emotion5" Value="angry" />
+    <String Key="Emotion6" Value="sad" />
+    <String Key="hero_rune_title" Value="rune" />
+    <String Key="combo" Value="combo" />
+    <String Key="rune_score" Value="score" />
+    <String Key="rune_lvUp" Value="upgrade" />
+    <String Key="rune_autoInstall" Value="automatic installation" />
+    <String Key="Single_Extra_Effect" Value="Single target damage bonus" />
+    <String Key="Multi_Extra_Effect" Value="group damage bonus" />
+    <String Key="RunesAutoInstallFail_Have_No_Slots" Value="no empty slot" />
+    <String Key="RunesAutoInstallFail_Have_No_Runes" Value="Get more runes" />
+    <String Key="RuneUpLvErroMaxLv" Value="Rune is full" />
+    <String Key="RuneUpLvErroExpLackRes" Value="Insufficient upgrade resources" />
+    <String Key="current" Value="Installed" />
+    <String Key="replace" Value="replace" />
+    <String Key="rune_replace" Value="replace" />
+    <String Key="rune_intall_title" Value="rune installation" />
+    <String Key="rune_install" Value="Install" />
+    <String Key="RuneUpLvErroExpNotEnough" Value="The selected rune is inexperienced" />
+    <String Key="Waiting" Value="WAITING" />
+    <String Key="AddEffect" Value="Effect +{0}%" />
+    <String Key="AddBound" Value="Bout +{0}" />
+    <String Key="AddEffectNoSign" Value="Effect {0}%" />
+    <String Key="SelectSameQualityRune" Value="Please choose a lower quality rune" />
+    <String Key="HaveNoSameTypeRunes" Value="No rune of this type" />
+    <String Key="Rune" Value="rune" />
+    <String Key="arcade_game_title" Value="arcade games" />
+    <String Key="game_left_times" Value="remaining times" />
+    <String Key="game_start" Value="start the game" />
+    <String Key="StartGameErr_OverTimes" Value="no games" />
+    <String Key="StartGameErr_LackRes" Value="Not enough coins" />
+    <String Key="chest_tower_title" Value="Climb the tower" />
+    <String Key="tower_game_reset" Value="reset" />
+    <String Key="suplly_hero" Value="Add a partner" />
+    <String Key="tower_game_next" Value="go to the next level" />
+    <String Key="choose_hero_confirm" Value="choose" />
+    <String Key="choose_hero_refresh" Value="refresh" />
+    <String Key="difficulty_mode" Value="difficulty :" />
+    <String Key="difficuity_hard" Value="difficulty" />
+    <String Key="difficulty_normal" Value="ordinary" />
+    <String Key="ChooseHeroErrHasNoTimes" Value="No partner added" />
+    <String Key="ChooseHeroErrHasNoHero" Value="Not enough optional partners" />
+    <String Key="ConfirmChestTowerReset" Value="Confirm reset level" />
+    <String Key="game_continue" Value="continue" />
+    <String Key="supply_hero_title" Value="Supplementary partner" />
+  </Dictionary>
+</Dictionaries>

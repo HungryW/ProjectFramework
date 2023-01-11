@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System;
 
-namespace HotFixEntry
+namespace HotFixEntry.UI
 {
     public class COpenParamCommonLoading
     {

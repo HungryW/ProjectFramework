@@ -5,10 +5,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using DG.Tweening;
-using HotFixEntry;
 using Defines;
 
-namespace HotFixLogic.UI
+namespace HotFixEntry.UI
 {
     public class CUICommonConfirm : CUIBase
     {
