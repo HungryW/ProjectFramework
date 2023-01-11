@@ -92,13 +92,10 @@ namespace GameFrameworkPackage
                 byte[] arrDllBytes = dll.bytes;
                 unsafe
                 {
-                    fixed (byte* ptr = arrDllBytes)
+                    LoadImageErrorCode err = RuntimeApi.LoadMetadataForAOTAssembly(arrDllBytes, HomologousImageMode.SuperSet);
+                    if (err != LoadImageErrorCode.OK)
                     {
-                        LoadImageErrorCode err = (LoadImageErrorCode)RuntimeApi.LoadMetadataForAOTAssembly((IntPtr)ptr, arrDllBytes.Length);
-                        if (err != LoadImageErrorCode.OK)
-                        {
-                            Log.Warning("LoadMetadataForAOTAssembly Fail, DllName= {0}, Error = {1}", assetName, err);
-                        }
+                        Log.Warning("LoadMetadataForAOTAssembly Fail, DllName= {0}, Error = {1}", assetName, err);
                     }
                 }
 

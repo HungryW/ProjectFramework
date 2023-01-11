@@ -44,13 +44,11 @@
 #include <limits>
 #include <stdarg.h>
 
-// ==={{ hybridclr
 #include <set>
 #include "hybridclr/metadata/MetadataUtil.h"
 #include "hybridclr/interpreter/Engine.h"
 #include "hybridclr/interpreter/Interpreter.h"
 #include "hybridclr/interpreter/InterpreterModule.h"
-// ===}} hybridclr
 
 namespace il2cpp
 {
@@ -788,6 +786,11 @@ namespace vm
         return klass->generic_class != NULL;
     }
 
+    bool Class::IsGenericTypeDefinition(const Il2CppClass* klass)
+    {
+        return IsGeneric(klass) && !IsInflated(klass);
+    }
+
     bool Class::IsSubclassOf(Il2CppClass *klass, Il2CppClass *klassc, bool check_interfaces)
     {
         Class::SetupTypeHierarchy(klass);
@@ -966,13 +969,11 @@ namespace vm
             klass->minimumAlignment = sizeof(Il2CppObject*);
         }
 
-        // ==={{ hybridclr
         bool isInterpreterType = hybridclr::metadata::IsInterpreterType(klass);
         bool computSize = klass->instance_size == 0 && isInterpreterType;
         bool isExplictLayout = klass->flags & TYPE_ATTRIBUTE_EXPLICIT_LAYOUT;
         bool computLayout = isInterpreterType;
         bool computInstanceFieldLayout = !isExplictLayout && isInterpreterType;
-        // ===}} hybridclr
 
         if (klass->field_count)
         {
@@ -1004,7 +1005,6 @@ namespace vm
                 klass->actualSize = IL2CPP_SIZEOF_STRUCT_WITH_NO_INSTANCE_FIELDS + sizeof(Il2CppObject);
             }
 
-// ==={{ hybridclr
             // comput size when explicit layout
             if (computSize && isExplictLayout && !layoutData.FieldOffsets.empty())
             {
@@ -1028,7 +1028,7 @@ namespace vm
             if (computSize)
             {
                 klass->instance_size = (uint32_t)instanceSize;
-                klass->native_size = (uint32_t)instanceSize;
+                klass->native_size = (uint32_t)instanceSize - sizeof(Il2CppObject);
                 klass->actualSize = (uint32_t)instanceSize;
             }
 
@@ -1094,8 +1094,6 @@ namespace vm
             klass->static_fields_size = (uint32_t)staticSize;
             klass->thread_static_fields_size = (uint32_t)threadStaticSize;
 
-// ===}} hybridclr
-
             if (klass->generic_class)
             {
                 SetupFieldOffsetsLocked(FIELD_LAYOUT_INSTANCE, klass, instanceSize, layoutData.FieldOffsets, lock);
@@ -1113,7 +1111,6 @@ namespace vm
         }
         else
         {
-// ==={{ hybridclr
             if (computSize)
             {
                 if (IS_CLASS_VALUE_TYPE(klass))
@@ -1121,7 +1118,6 @@ namespace vm
                     instanceSize = actualSize = IL2CPP_SIZEOF_STRUCT_WITH_NO_INSTANCE_FIELDS + sizeof(Il2CppObject);
                 }
             }
-// ===}} hybridclr
             // need to set this in case there are no fields in a generic instance type
             instanceSize = UpdateInstanceSizeForGenericClass(klass, instanceSize);
 
@@ -1131,13 +1127,11 @@ namespace vm
             // uses that extra space (as clang does).
             klass->actualSize = static_cast<uint32_t>(actualSize);
 
-// ==={{ hybridclr
             if (computSize)
             {
                 klass->instance_size = (uint32_t)instanceSize;
-                klass->native_size = (uint32_t)instanceSize;
+                klass->native_size = (uint32_t)instanceSize - sizeof(Il2CppObject);
             }
-// ===}} hybridclr
         }
 
         if (klass->static_fields_size)
@@ -1269,7 +1263,6 @@ namespace vm
 
                 newMethod->methodPointerCallByInterp = newMethod->methodPointer;
                 newMethod->virtualMethodPointerCallByInterp = newMethod->virtualMethodPointer;
-                newMethod->isInterpterImpl = hybridclr::metadata::IsInterpreterType(klass);
                 newMethod->initInterpCallMethodPointer = true;
                 newMethod->klass = klass;
                 newMethod->return_type = methodInfo.return_type;
@@ -1305,6 +1298,7 @@ namespace vm
                     newMethod->virtualMethodPointer = MetadataCache::GetUnresolvedVirtualCallStub(newMethod);
                 }
 
+                newMethod->isInterpterImpl = hybridclr::interpreter::InterpreterModule::IsImplementsByInterpreter(newMethod);
 
                 klass->methods[index] = newMethod;
 
@@ -1669,14 +1663,18 @@ namespace vm
 #endif
         }
 
-        if (!Class::IsGeneric(klass))
+        bool canBeInstantiated = !Class::IsGeneric(klass) && !il2cpp::metadata::GenericMetadata::ContainsGenericParameters(klass);
+
+        if (canBeInstantiated)
+        {
             SetupGCDescriptor(klass, lock);
 
-        if (klass->generic_class)
-        {
-            // This should be kept last.  InflateRGCTXLocked may need intialized data from the class we are initializing
-            if (klass->genericRecursionDepth < il2cpp::metadata::GenericMetadata::GetMaximumRuntimeGenericDepth() || il2cpp::vm::Runtime::IsLazyRGCTXInflationEnabled())
-                klass->rgctx_data = il2cpp::metadata::GenericMetadata::InflateRGCTXLocked(klass->image, klass->token, &klass->generic_class->context, lock);
+            if (klass->generic_class)
+            {
+                // This should be kept last.  InflateRGCTXLocked may need initialized data from the class we are initializing
+                if (klass->genericRecursionDepth < il2cpp::metadata::GenericMetadata::GetMaximumRuntimeGenericDepth() || il2cpp::vm::Runtime::IsLazyRGCTXInflationEnabled())
+                    klass->rgctx_data = il2cpp::metadata::GenericMetadata::InflateRGCTXLocked(klass->image, klass->token, &klass->generic_class->context, lock);
+            }
         }
 
         klass->initialized = true;
@@ -2276,7 +2274,6 @@ namespace vm
             {
                 return klass;
             }
-            // ==={{ hybridclr
             hybridclr::interpreter::MachineState& state = hybridclr::interpreter::InterpreterModule::GetCurrentThreadMachineState();
             const hybridclr::interpreter::InterpFrame* frame = state.GetTopFrame();
             if (frame)
@@ -2300,7 +2297,6 @@ namespace vm
                     return klass;
                 }
             }
-            // ===}} hybridclr
 
             // First, try mscorlib            if (klass == NULL && image != Image::GetCorlib())
             klass = Image::FromTypeNameParseInfo(Image::GetCorlib(), info, searchFlags & kTypeSearchFlagIgnoreCase);
@@ -2362,46 +2358,28 @@ namespace vm
         return klass->declaringType;
     }
 
-    const MethodInfo* Class::GetVirtualMethod(Il2CppClass *klass, const MethodInfo *method)
+    const MethodInfo* Class::GetVirtualMethod(Il2CppClass *klass, const MethodInfo *virtualMethod)
     {
         IL2CPP_ASSERT(klass->is_vtable_initialized);
 
-        if ((method->flags & METHOD_ATTRIBUTE_FINAL) || !(method->flags & METHOD_ATTRIBUTE_VIRTUAL))
-            return method;
+        if ((virtualMethod->flags & METHOD_ATTRIBUTE_FINAL) || !(virtualMethod->flags & METHOD_ATTRIBUTE_VIRTUAL))
+            return virtualMethod;
 
-        Il2CppClass* methodDeclaringType = method->klass;
+        Il2CppClass* methodDeclaringType = virtualMethod->klass;
+        const MethodInfo* vtableSlotMethod;
         if (Class::IsInterface(methodDeclaringType))
         {
-            const VirtualInvokeData* invokeData = ClassInlines::GetInterfaceInvokeDataFromVTable(klass, methodDeclaringType, method->slot);
-            if (invokeData == NULL)
-                return NULL;
-            const MethodInfo* itfMethod = invokeData->method;
-            if (Method::IsGenericInstance(method))
-            {
-                if (itfMethod->methodPointer)
-                    return itfMethod;
-
-                const MethodInfo* methodDefintion = klass->generic_class ? il2cpp::vm::MetadataCache::GetGenericMethodDefinition(itfMethod) : itfMethod;
-                return il2cpp::metadata::GenericMethod::GetMethod(methodDefintion, klass->generic_class ? klass->generic_class->context.class_inst : NULL, method->genericMethod->context.method_inst);
-            }
-            else
-            {
-                return itfMethod;
-            }
-        }
-
-        if (Method::IsGenericInstance(method))
-        {
-            if (method->methodPointer)
-                return method;
-
-            return il2cpp::metadata::GenericMethod::GetMethod(klass->vtable[method->slot].method, method->genericMethod->context.class_inst, method->genericMethod->context.method_inst);
+            vtableSlotMethod = ClassInlines::GetInterfaceInvokeDataFromVTable(klass, methodDeclaringType, virtualMethod->slot)->method;
         }
         else
         {
-            IL2CPP_ASSERT(method->slot < klass->vtable_count);
-            return klass->vtable[method->slot].method;
+            IL2CPP_ASSERT(virtualMethod->slot < klass->vtable_count);
+            vtableSlotMethod = klass->vtable[virtualMethod->slot].method;
         }
+
+        if (Method::IsGenericInstanceMethod(virtualMethod))
+            return il2cpp::metadata::GenericMethod::GetGenericVirtualMethod(vtableSlotMethod, virtualMethod);
+        return vtableSlotMethod;
     }
 
     static bool is_generic_argument(Il2CppType* type)
