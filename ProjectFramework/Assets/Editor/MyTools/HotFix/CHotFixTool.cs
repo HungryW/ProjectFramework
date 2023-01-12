@@ -14,6 +14,7 @@ namespace Tools
         public static void CopyHybridDllToTarget()
         {
             _CopyDllFileToTarget(SettingsUtil.GetHotUpdateDllsOutputDirByTarget(EditorUserBuildSettings.activeBuildTarget), CHotFixSetting.ms_arrHotFixDllName, CHotFixSetting.GetHotFixDllRootPath());
+            _CopyDllFileToTarget(SettingsUtil.GetAssembliesPostIl2CppStripDir(EditorUserBuildSettings.activeBuildTarget), CHotFixSetting.ms_arrAOTDllName, CHotFixSetting.GetAOTDllRootPath());
         }
 
         private static void _CopyDllFileToTarget(string sourceFolder, string[] fileNames, string targetFolder)
