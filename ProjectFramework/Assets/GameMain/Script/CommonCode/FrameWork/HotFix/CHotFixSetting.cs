@@ -25,6 +25,7 @@ namespace GameFrameworkPackage
                                                         "Define"
                                                        ,"HotFixEntry"
                                                        ,"HotFixLogic"
+                                                       ,"Assembly-CSharp"
                                                      };
 
         public static string[] ms_arrAOTDllName = {  "mscorlib"
@@ -62,7 +63,7 @@ namespace GameFrameworkPackage
         {
             return ms_arrHotFixDllName[2];
         }
-       
+
         public static string GetDllName(string a_szName)
         {
             return Utility.Text.Format("{0}.{1}", a_szName, ms_szDllSuffix);
@@ -75,8 +76,24 @@ namespace GameFrameworkPackage
 
         public static string GetDllResFullPathName(string a_szDllTypeName, string a_szName)
         {
-            return Utility.Text.Format("{0}/Dll/{1}/{2}", ms_szHotFixRootPath, a_szDllTypeName, GetDllResName(a_szName));
+            return Utility.Text.Format("{0}/{1}", _GetHotFixDllRootPath(a_szDllTypeName), GetDllResName(a_szName));
         }
+
+        public static string GetHotFixDllRootPath()
+        {
+            return _GetHotFixDllRootPath(ms_szDllTypeHotFix);
+        }
+
+        public static string GetAOTDllRootPath()
+        {
+            return _GetHotFixDllRootPath(ms_szDllTypeAOT);
+        }
+
+        private static string _GetHotFixDllRootPath(string a_szDllTypeName)
+        {
+            return Utility.Text.Format("{0}/Dll/{1}", ms_szHotFixRootPath, a_szDllTypeName);
+        }
+
         public static string[] GetAllHotFixResFullPath()
         {
             return GetAllResFullPath(ms_szDllTypeHotFix, ms_arrHotFixDllName);

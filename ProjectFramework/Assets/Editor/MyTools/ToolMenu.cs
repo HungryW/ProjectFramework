@@ -85,18 +85,6 @@ namespace Tools
             TextToolDataEditor.Open();
         }
 
-        [MenuItem("MyTools/调试/预加载/预加载所有必须资源(慢)", false, 40)]
-        public static void DebugToolPreloadAllRes()
-        {
-            DebugTool.EnablePreload();
-        }
-
-        [MenuItem("MyTools/调试/预加载/只预加载少部分资源(快)", false, 41)]
-        public static void DebugToolPreloadSomeRes()
-        {
-            DebugTool.DisablePreload();
-        }
-
         private static string[] HotFixServerType = { "HotfixServerLocal", "HotfixServerRemoteTest", "HotfixServerRemote", "HotfixServerRemoteTestNoSDk" };  //热更服务器的类型
         [MenuItem("MyTools/热更/设置热更服务器/本地", false, 51)]
         private static void SetHotfixServer_Local()
@@ -137,6 +125,14 @@ namespace Tools
             }
             ScriptingDefineSymbols.AddScriptingDefineSymbol(HotFixServerType[2]);
         }
+
+
+        [MenuItem("MyTools/热更/HybridCLR/复制所需Dll到目录中", false, 55)]
+        private static void CopyHybridCLRDll()
+        {
+            CHotFixTool.CopyHybridDllToTarget();
+        }
+
 
 
         [MenuItem("Assets/MyTool/Utility/复制文件名", false, 1)]
