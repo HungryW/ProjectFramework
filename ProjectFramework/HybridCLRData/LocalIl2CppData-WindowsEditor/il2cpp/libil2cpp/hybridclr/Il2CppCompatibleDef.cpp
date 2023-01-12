@@ -9,6 +9,11 @@ namespace hybridclr
 	const char* g_placeHolderAssemblies[] =
 	{
 		//!!!{{PLACE_HOLDER
+		"HotFixEntry",
+		"Define",
+		"HotFixLogic",
+		"Assembly-CSharp",
+
 		//!!!}}PLACE_HOLDER
 		nullptr,
 	};
