@@ -10,6 +10,8 @@
     <String Key="ForceUpdate.Message" Value="The current game version is out-of-date. Would you like to go for update now?" />
     <String Key="ForceUpdate.UpdateButton" Value="UPDATE" />
     <String Key="ForceUpdate.QuitButton" Value="QUIT" />
+    <String Key="HotFixDllReloadError" Value="The resource update is complete, do you want to reboot immediately?" />
+    <String Key="Comfirm" Value="Comfirm" />
   </Dictionary>
   <Dictionary Language="ChineseSimplified">
     <String Key="ForceUpdate.Title" Value="强制更新" />
@@ -21,5 +23,7 @@
     <String Key="UpdateResource.Tips" Value="{0}/{1}, {2}/{3}, {4:P0}, {5}/s" />
     <String Key="PreloadRestartImmediately" Value="立即重启" />
     <String Key="PreloadTipNetErrorRestart" Value=" 网络错误,请检查网络连接后重启游戏" />
+    <String Key="HotFixDllReloadError" Value="资源更新完毕是否立即重启" />
+    <String Key="Comfirm" Value="确认" />
   </Dictionary>
 </Dictionaries>

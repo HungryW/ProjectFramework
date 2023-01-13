@@ -18,12 +18,6 @@ namespace GameFrameworkPackage
             set;
         }
 
-        public string CheckVersionUrl
-        {
-            get;
-            set;
-        }
-
         public string WindowsAppUrl
         {
             get;

@@ -16,7 +16,7 @@ namespace GameFrameworkPackageEditor
 {
     public static class CBuildInfoTools
     {
-        private static string ms_szBuildInfoPath = Application.dataPath + "/GameMain/Config/BuildInfo.txt";
+        private static string ms_szBuildInfoPath = Application.dataPath + "/FrameWork/GameframeWork/Configs/BuildInfo.txt";
         public static int ReadBuildInternalGameVersion()
         {
             if (!File.Exists(ms_szBuildInfoPath))

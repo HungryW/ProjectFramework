@@ -5,6 +5,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// }} 
 
 	// {{ AOT generic type
+	//GameFramework.DataTable.IDataTable`1<System.Object>
 	//GameFramework.Fsm.FsmState`1<System.Object>
 	//GameFramework.Fsm.IFsm`1<System.Object>
 	//GameFrameworkPackage.CFsmState`1<System.Object>
@@ -37,20 +38,21 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Object UnityEngine.GameObject::AddComponent<System.Object>()
 		// System.Object UnityEngine.GameObject::GetComponent<System.Object>()
 		// System.Object UnityEngine.Object::Instantiate<System.Object>(System.Object,UnityEngine.Transform,System.Boolean)
+		// GameFramework.DataTable.IDataTable`1<System.Object> UnityGameFramework.Runtime.DataTableComponent::GetDataTable<System.Object>()
 		// GameFramework.Fsm.IFsm`1<System.Object> UnityGameFramework.Runtime.FsmComponent::CreateFsm<System.Object>(System.Object,GameFramework.Fsm.FsmState`1<System.Object>[])
 		// System.Boolean UnityGameFramework.Runtime.FsmComponent::DestroyFsm<System.Object>()
-		// System.Void UnityGameFramework.Runtime.Log::Error<System.Object>(System.String,System.Object)
-		// System.Void UnityGameFramework.Runtime.Log::Error<System.Int32,System.Int32>(System.String,System.Int32,System.Int32)
 		// System.Void UnityGameFramework.Runtime.Log::Error<System.Object,System.Object>(System.String,System.Object,System.Object)
 		// System.Void UnityGameFramework.Runtime.Log::Error<System.Object,System.Object,System.Object>(System.String,System.Object,System.Object,System.Object)
+		// System.Void UnityGameFramework.Runtime.Log::Error<System.Object>(System.String,System.Object)
 		// System.Void UnityGameFramework.Runtime.Log::Error<System.Object,System.Int32>(System.String,System.Object,System.Int32)
-		// System.Void UnityGameFramework.Runtime.Log::Info<System.Object,System.Object,System.Object,System.Object>(System.String,System.Object,System.Object,System.Object,System.Object)
+		// System.Void UnityGameFramework.Runtime.Log::Error<System.Int32,System.Int32>(System.String,System.Int32,System.Int32)
+		// System.Void UnityGameFramework.Runtime.Log::Info<System.Object>(System.String,System.Object)
 		// System.Void UnityGameFramework.Runtime.Log::Info<System.Object,System.Int32>(System.String,System.Object,System.Int32)
 		// System.Void UnityGameFramework.Runtime.Log::Info<System.Object,System.Object>(System.String,System.Object,System.Object)
-		// System.Void UnityGameFramework.Runtime.Log::Info<System.Object>(System.String,System.Object)
-		// System.Void UnityGameFramework.Runtime.Log::Warning<Defines.EUIFormID>(System.String,Defines.EUIFormID)
-		// System.Void UnityGameFramework.Runtime.Log::Warning<System.Int32,System.Int32>(System.String,System.Int32,System.Int32)
-		// System.Void UnityGameFramework.Runtime.Log::Warning<System.Int32>(System.String,System.Int32)
+		// System.Void UnityGameFramework.Runtime.Log::Info<System.Object,System.Object,System.Object,System.Object>(System.String,System.Object,System.Object,System.Object,System.Object)
 		// System.Void UnityGameFramework.Runtime.Log::Warning<System.Object>(System.String,System.Object)
+		// System.Void UnityGameFramework.Runtime.Log::Warning<Defines.EUIFormID>(System.String,Defines.EUIFormID)
+		// System.Void UnityGameFramework.Runtime.Log::Warning<System.Int32>(System.String,System.Int32)
+		// System.Void UnityGameFramework.Runtime.Log::Warning<System.Int32,System.Int32>(System.String,System.Int32,System.Int32)
 	}
 }

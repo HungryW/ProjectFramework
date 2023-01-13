@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityGameFramework.Editor;
 using Aliyun.OSS;
 using UnityGameFramework.Editor.ResourceTools;
+using Tools;
 
 namespace GameFrameworkPackageEditor
 {
@@ -47,6 +48,7 @@ namespace GameFrameworkPackageEditor
             szAppGameVersion = applicableGameVersion;
             nInternalResVersion = internalResourceVersion;
             szABOutputRootPath = outputDirectory;
+            CHotFixTool.CopyHybridDllToTarget();
         }
 
         public void OnPreprocessPlatform(Platform platform, string workingPath, bool outputPackageSelected, string outputPackagePath, bool outputFullSelected, string outputFullPath, bool outputPackedSelected, string outputPackedPath)
@@ -59,6 +61,8 @@ namespace GameFrameworkPackageEditor
 
         public void OnOutputUpdatableVersionListData(Platform platform, string versionListPath, int versionListLength, int versionListHashCode, int versionListCompressedLength, int versionListCompressedHashCode)
         {
+            //生成上传的version文件, 放在versio文件夹下
+            CBuildABUtilityTools.GenerateVersionInfos(szAppGameVersion, nInternalResVersion, szABOutputRootPath, platform, versionListLength, versionListHashCode, versionListCompressedLength, versionListCompressedHashCode);
         }
 
         public void OnPostprocessPlatform(Platform platform, string workingPath, bool outputPackageSelected, string outputPackagePath, bool outputFullSelected, string outputFullPath, bool outputPackedSelected, string outputPackedPath, bool isSuccess)
@@ -94,19 +98,16 @@ namespace GameFrameworkPackageEditor
         public void OnPostprocessAllPlatforms(string productName, string companyName, string gameIdentifier, string gameFrameworkVersion, string unityVersion, string applicableGameVersion, int internalResourceVersion, Platform platforms, AssetBundleCompressionType assetBundleCompression, string compressionHelperTypeName, bool additionalCompressionSelected, bool forceRebuildAssetBundleSelected, string buildEventHandlerTypeName, string outputDirectory, BuildAssetBundleOptions buildAssetBundleOptions, string workingPath, bool outputPackageSelected, string outputPackagePath, bool outputFullSelected, string outputFullPath, bool outputPackedSelected, string outputPackedPath, string buildReportPath)
         {
 
-            //根据GameResourceVersion文件生成上传的version文件, 放在versio文件夹下
-            CBuildABUtilityTools.GenerateVersionInfos(szAppGameVersion, nInternalResVersion, szABOutputRootPath);
-
             //将要上传资源服务器的Full文件夹下的文件拷贝到res文件夹下
             CBuildABUtilityTools.CopyFullResToUploadServerDic(szABOutputRootPath, outputFullPath);
 
-            //把full的资源上传到资源服务器
-            CBuildABUtilityTools.UploadFullResToOss(outputDirectory, COssMgr.Instance.GetObjectNameRoot(CABResConfig.GetHotFixResRootUrl()));
+            ////把full的资源上传到资源服务器
+            //CBuildABUtilityTools.UploadFullResToOss(outputDirectory, COssMgr.Instance.GetObjectNameRoot(CABResConfig.GetHotFixResRootUrl()));
 
-            //将versioninfo文件夹下的文件整体替换资源服务器的文件夹
-            CBuildABUtilityTools.UploadFullVersionInfoToOss(outputDirectory, COssMgr.Instance.GetObjectNameRoot(CABResConfig.GetHotFixResRootUrl()));
+            ////将versioninfo文件夹下的文件整体替换资源服务器的文件夹
+            //CBuildABUtilityTools.UploadFullVersionInfoToOss(outputDirectory, COssMgr.Instance.GetObjectNameRoot(CABResConfig.GetHotFixResRootUrl()));
 
-            CBuildABUtilityTools.SetVersionInfoFileACL(CPackageUtility.Path.GetCombinePath(COssMgr.Instance.GetObjectNameRoot(CABResConfig.GetHotFixResRootUrl()), CABResConfig.ms_szHotFixVersionDicName), CannedAccessControlList.PublicRead);
+            //CBuildABUtilityTools.SetVersionInfoFileACL(CPackageUtility.Path.GetCombinePath(COssMgr.Instance.GetObjectNameRoot(CABResConfig.GetHotFixResRootUrl()), CABResConfig.ms_szHotFixVersionDicName), CannedAccessControlList.PublicRead);
         }
     }
 }

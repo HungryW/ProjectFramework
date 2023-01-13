@@ -26,6 +26,7 @@
       <Asset Guid="2aa59c40d0ddfa7488a645f33222c62e" ResourceName="Atlas/UI/Common/Btn" />
       <Asset Guid="2cda990e2423bbf4892e6590ba056729" ResourceName="Scenes" />
       <Asset Guid="2e0a5d32fdf7a6640b70e9316f8ab273" ResourceName="DataTables" />
+      <Asset Guid="2ead00c83216cf946a5ae7572804a199" ResourceName="HotFix/Dll/HotFix" />
       <Asset Guid="3d3951bd35a704c44a43bf3e2a930d00" ResourceName="Localization/English/Dictionaries" />
       <Asset Guid="40cd6184f5e28874c80eaae21694867c" ResourceName="DataTables" />
       <Asset Guid="45eae628d91a7f342a0a28cf0ea45fd4" ResourceName="Atlas/UISprite/ResIcon" />

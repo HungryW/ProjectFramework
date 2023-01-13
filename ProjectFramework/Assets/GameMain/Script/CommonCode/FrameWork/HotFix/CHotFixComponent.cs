@@ -10,9 +10,22 @@ using HybridCLR;
 
 namespace GameFrameworkPackage
 {
+    public class CHotFixAssembly
+    {
+        public Assembly m_ass;
+        public int m_nCrc;
+
+        public CHotFixAssembly(Assembly ass, int nCrc)
+        {
+            m_ass = ass;
+            m_nCrc = nCrc;
+        }
+    }
+
     public class CHotFixComponent : GameFrameworkComponent
     {
-        private Dictionary<string, Assembly> m_mapHotFixAss = new Dictionary<string, Assembly>();
+        private static Dictionary<string, CHotFixAssembly> ms_mapHotFixAss = new Dictionary<string, CHotFixAssembly>();
+        private static bool ms_bIsHandledAotDll = false;
 
         public void LoadHotFix()
         {
@@ -25,11 +38,10 @@ namespace GameFrameworkPackage
                 _LoadHotFixDll();
             }
         }
-
         private void _LoadHotFixDll()
         {
             LoadAssetCallbacks loadHotFixDllCallbacks = new LoadAssetCallbacks(_OnLoadHotFixAssetSuccess, _OnLoadHotFixAssetFail);
-            CLoadGroupAssetesTools.StartLoad(CHotFixSetting.GetAllHotFixResFullPath(), loadHotFixDllCallbacks, _OnHotFixDllLoadEnd);
+            CLoadSequenceAssetesTools.StartLoad(CHotFixSetting.GetAllHotFixResFullPath(), loadHotFixDllCallbacks, _OnHotFixDllLoadEnd);
         }
 
         private void _OnLoadHotFixAssetSuccess(string assetName, object asset, float duration, object userData)
@@ -37,22 +49,59 @@ namespace GameFrameworkPackage
             var textAsset = asset as TextAsset;
             if (null == textAsset)
             {
-                Log.Debug($"Load text asset [ {assetName} ] failed.");
+                _OnEnterHotFixFail($"Load text asset [ {assetName} ] failed.");
                 return;
             }
 
             try
             {
-                Assembly asm = Assembly.Load(textAsset.bytes);
-                string szName = asm.GetName().Name;
-                m_mapHotFixAss.Add(szName, asm);
-                Log.Debug("Assembly [{0}] loaded", szName);
+                CHotFixAssembly assLoaded = _GetAssByAssetName(assetName);
+                if (null == assLoaded)
+                {
+                    Assembly asm = Assembly.Load(textAsset.bytes);
+                    string szName = asm.GetName().Name;
+                    ms_mapHotFixAss.Add(szName, new CHotFixAssembly(asm, Utility.Verifier.GetCrc32(textAsset.bytes)));
+                    Log.Debug("Assembly [{0}] loaded", szName);
+                }
+                else
+                {
+                    int nNewDllHashCode = Utility.Verifier.GetCrc32(textAsset.bytes);
+                    if (nNewDllHashCode != assLoaded.m_nCrc)
+                    {
+                        //如果重启的过程中更新了Dll,则直接退出游戏
+                        _ToForceRestartGame();
+                    }
+                }
+
             }
             catch (Exception e)
             {
                 _OnEnterHotFixFail(e.Message);
                 throw;
             }
+        }
+
+        private void _ToForceRestartGame()
+        {
+            COpenParamCommonConfirm param = new COpenParamCommonConfirm(CGameEntryMgr.Localization.GetStringEX("HotFixDllReloadError"));
+            param.SetShowCancel(false);
+            param.SetConfirmCallback(() =>
+            {
+                GameEntry.Shutdown(ShutdownType.Quit);
+            });
+            CUIPreloadConfirm.Tip(param);
+        }
+
+        private CHotFixAssembly _GetAssByAssetName(string a_szAssetName)
+        {
+            foreach (var item in ms_mapHotFixAss)
+            {
+                if (a_szAssetName.Contains(item.Key))
+                {
+                    return item.Value;
+                }
+            }
+            return null;
         }
 
         private void _OnLoadHotFixAssetFail(string assetName, LoadResourceStatus status, string errorMessage, object userData)
@@ -75,8 +124,15 @@ namespace GameFrameworkPackage
 
         private void _LoadAOTDll()
         {
-            LoadAssetCallbacks loadAOTDllCallbacks = new LoadAssetCallbacks(_OnLoadAOTAssetSuccess, _OnLoadAOTAssetFail);
-            CLoadGroupAssetesTools.StartLoad(CHotFixSetting.GetAllAOTResFullPath(), loadAOTDllCallbacks, _OnAOTDllLoadEnd);
+            if (ms_bIsHandledAotDll)
+            {
+                _OnAOTDllLoadEnd(true);
+            }
+            else
+            {
+                LoadAssetCallbacks loadAOTDllCallbacks = new LoadAssetCallbacks(_OnLoadAOTAssetSuccess, _OnLoadAOTAssetFail);
+                CLoadGroupAssetesTools.StartLoad(CHotFixSetting.GetAllAOTResFullPath(), loadAOTDllCallbacks, _OnAOTDllLoadEnd);
+            }
         }
 
         private void _OnLoadAOTAssetSuccess(string assetName, object asset, float duration, object userData)
@@ -116,6 +172,7 @@ namespace GameFrameworkPackage
         {
             if (a_bSuccess)
             {
+                ms_bIsHandledAotDll = true;
                 _EnterHotFix();
             }
             else
@@ -134,15 +191,13 @@ namespace GameFrameworkPackage
             foreach (string szDllName in CHotFixSetting.ms_arrHotFixDllName)
             {
                 Assembly asm = _GetHotFixAssInEditor(szDllName);
-                if (null != asm)
+                if (null != asm && !ms_mapHotFixAss.ContainsKey(szDllName))
                 {
-                    m_mapHotFixAss.Add(szDllName, asm);
+                    ms_mapHotFixAss.Add(szDllName, new CHotFixAssembly(asm, 0));
                 }
                 else
                 {
-                    string szErrorMsg = Utility.Text.Format("_InitHotFixDllInEditor Fail Dll = {0}", szDllName);
-                    _OnEnterHotFixFail(szErrorMsg);
-                    return;
+                    Log.Info("_InitHotFixDllInEditor Fail Dll = {0}", szDllName);
                 }
             }
             _EnterHotFix();
@@ -168,9 +223,9 @@ namespace GameFrameworkPackage
         }
         public Assembly GetAsmByName(string a_szDllName)
         {
-            if (m_mapHotFixAss.ContainsKey(a_szDllName))
+            if (ms_mapHotFixAss.ContainsKey(a_szDllName))
             {
-                return m_mapHotFixAss[a_szDllName];
+                return ms_mapHotFixAss[a_szDllName].m_ass;
             }
             else
             {

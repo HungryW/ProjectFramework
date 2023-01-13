@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<linker>
+
+  <assembly fullname="DoTween.Runtime"  preserve="all">
+  </assembly>
+  <assembly fullname="GameFramework"  preserve="all">
+  </assembly>
+  <assembly fullname="GameMain"  preserve="all">
+  </assembly>
+  <assembly fullname="UnityGameFramework.Runtime" preserve="all">
+  </assembly>
+</linker>

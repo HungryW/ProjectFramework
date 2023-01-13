@@ -7,7 +7,7 @@ namespace GameFrameworkPackage
 {
     public static class CABResConfig
     {
-        public static string ms_szHotFixUrl_Local = "http://192.168.0.110";
+        public static string ms_szHotFixUrl_Local = "http://192.168.0.111";
         public static string ms_szHotFixUrl_PublicTestNoSDK = "http://unusualbroadcast.s3.ap-southeast-1.amazonaws.com/Variant/NoSDK";
         public static string ms_szHotFixUrl_PublicTest = "https://unusual-southeast-base.oss-ap-southeast-1.aliyuncs.com/unusual/HotFix/dev2207";
         public static string ms_szHotFixUrl_Public = "https://unusual-southeast-base.oss-ap-southeast-1.aliyuncs.com/unusual/HotFix/PublicTest2207";

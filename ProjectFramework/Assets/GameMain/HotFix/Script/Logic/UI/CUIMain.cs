@@ -1,3 +1,5 @@
+using Defines;
+using GameFrameworkPackage;
 using HotFixEntry;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,8 +33,17 @@ namespace HotFixLogic.UI
         protected override void _OnInit(object userData)
         {
             base._OnInit(userData);
-            BtnConfirm.onClick.AddListener(() => { LbContent.text = "确认点击了"; });
-            BtnCancel.onClick.AddListener(() => { LbContent.text = "取消点击了"; });
+            BtnConfirm.onClick.AddListener(() =>
+            {
+                LbContent.text = "确认点击了";
+                CHotFixEntry.Shutdown(UnityGameFramework.Runtime.ShutdownType.Restart);
+            });
+            BtnCancel.onClick.AddListener(() =>
+            {
+                DRUIForm dr = CHotFixEntry.DataTable.GetDataTable<DRUIForm>().MaxIdDataRow;
+                LbContent.text = "取消点击了成功吧热更?" + dr.AssetName;
+
+            });
             BtnClose.onClick.AddListener(() => { LbContent.text = "关闭点击了"; });
         }
     }

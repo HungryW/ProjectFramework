@@ -14,6 +14,7 @@
   </assembly>
   <assembly fullname="GameFramework">
     <type fullname="GameFramework.DataTable.IDataRow" preserve="all" />
+    <type fullname="GameFramework.DataTable.IDataTable`1" preserve="all" />
     <type fullname="GameFramework.Event.GameEventArgs" preserve="all" />
     <type fullname="GameFramework.Fsm.FsmState`1" preserve="all" />
     <type fullname="GameFramework.Fsm.IFsm`1" preserve="all" />
@@ -97,7 +98,6 @@
     <type fullname="UnityEngine.Events.UnityEvent" preserve="all" />
     <type fullname="UnityEngine.GameObject" preserve="all" />
     <type fullname="UnityEngine.Graphics" preserve="all" />
-    <type fullname="UnityEngine.MonoBehaviour" preserve="all" />
     <type fullname="UnityEngine.Object" preserve="all" />
     <type fullname="UnityEngine.RectTransform" preserve="all" />
     <type fullname="UnityEngine.RenderTexture" preserve="all" />

@@ -87,7 +87,8 @@ namespace GameFramework
         /// <returns>对象的哈希值。</returns>
         public override int GetHashCode()
         {
-            return m_Type.GetHashCode() ^ m_Name.GetHashCode();
+            int n = m_Type.GetHashCode() ^ m_Name.GetHashCode();
+            return n;
         }
 
         /// <summary>

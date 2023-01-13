@@ -46,6 +46,7 @@ namespace GameFrameworkPackage
 
         public void Load(string a_szText)
         {
+            m_mapVal.Clear();
             string[] rowTexts = CPackageUtility.Text.SplitToLines(a_szText);
             foreach (string dataRowText in rowTexts)
             {

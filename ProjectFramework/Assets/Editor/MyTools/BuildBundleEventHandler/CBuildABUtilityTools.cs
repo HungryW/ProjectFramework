@@ -11,6 +11,7 @@ using UnityGameFramework.Editor;
 using System.Text;
 using Aliyun.OSS;
 using Aliyun.OSS.Common;
+using UnityGameFramework.Editor.ResourceTools;
 
 namespace GameFrameworkPackageEditor
 {
@@ -26,63 +27,50 @@ namespace GameFrameworkPackageEditor
 
         private static string ms_szPathUploadRecordPath = "VersionRecored";
 
-
-        public static void GenerateVersionInfos(string szGameVersion, int nInternalResVersion, string a_szABRootDic)
+        public static void GenerateVersionInfos(string szGameVersion, int nInternalResVersion, string a_szABRootDic, Platform a_ePlatform, int versionListLength, int versionListHashCode, int versionListCompressedLength, int versionListCompressedHashCode)
         {
-            string szRecordPath = CPackageUtility.Path.GetCombinePath(a_szABRootDic, Utility.Text.Format("{0}_{1}.xml", ms_szRecordName, szGameVersion.Replace('.', '_')));
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(szRecordPath);
-            XmlNode xmlRoot = xmlDocument.SelectSingleNode("ResourceVersionInfo");
+            string szPlatform = a_ePlatform.ToString();
+            CVersionInfo version = new CVersionInfo();
+            version.ForceUpdateGame = false;
+            version.InternalGameVersion = CBuildInfoTools.ReadBuildInternalGameVersion();
+            version.InternalResourceVersion = nInternalResVersion;
+            version.LatestGameVersion = szGameVersion;
+            version.UpdatePrefixUri = _GetHotFixResUrl(szGameVersion, nInternalResVersion, szPlatform);
 
-            XmlNodeList xmlPlatformList = xmlRoot.ChildNodes;
-            for (int i = 0; i < xmlPlatformList.Count; i++)
+            version.VersionListLength = versionListLength;
+            version.VersionListHashCode = versionListHashCode;
+            version.VersionListCompressedLength = versionListCompressedLength;
+            version.VersionListCompressedHashCode = versionListCompressedHashCode;
+            string szVersionInfo = JsonMapper.ToJson(version);
+            string szUploadSeverRoot = CPackageUtility.Path.GetCombinePath(a_szABRootDic, ms_szPathUploadServerRoot);
+            if (!Directory.Exists(szUploadSeverRoot))
             {
-                XmlNode xmlPlatform = xmlPlatformList.Item(i);
-                string szPlatform = xmlPlatform.Name;
+                Directory.CreateDirectory(szUploadSeverRoot);
+            }
+            string szUploadVersionDic = CPackageUtility.Path.GetCombinePath(szUploadSeverRoot, CABResConfig.ms_szHotFixVersionDicName);
+            if (!Directory.Exists(szUploadVersionDic))
+            {
+                Directory.CreateDirectory(szUploadVersionDic);
+            }
 
-                CVersionInfo version = new CVersionInfo();
-                version.ForceUpdateGame = false;
-                version.InternalGameVersion = CBuildInfoTools.ReadBuildInternalGameVersion();
-                version.InternalResourceVersion = nInternalResVersion;
-                version.LatestGameVersion = szGameVersion;
-                version.UpdatePrefixUri = _GetHotFixResUrl(szGameVersion, nInternalResVersion, szPlatform);
-
-                version.VersionListLength = int.Parse(xmlPlatform.Attributes.GetNamedItem("Length").Value);
-                version.VersionListHashCode = int.Parse(xmlPlatform.Attributes.GetNamedItem("HashCode").Value);
-                version.VersionListCompressedLength = int.Parse(xmlPlatform.Attributes.GetNamedItem("ZipLength").Value);
-                version.VersionListCompressedHashCode = int.Parse(xmlPlatform.Attributes.GetNamedItem("ZipHashCode").Value);
-                string szVersionInfo = JsonMapper.ToJson(version);
-
-                string szUploadSeverRoot = CPackageUtility.Path.GetCombinePath(a_szABRootDic, ms_szPathUploadServerRoot);
-                if (!Directory.Exists(szUploadSeverRoot))
+            string szRecordDic = CPackageUtility.Path.GetCombinePath(szUploadSeverRoot, ms_szPathUploadRecordPath);
+            if (!Directory.Exists(szRecordDic))
+            {
+                Directory.CreateDirectory(szRecordDic);
+            }
+            string szVersionPath = CPackageUtility.Path.GetCombinePath(szUploadVersionDic, Utility.Text.Format("{0}_version.txt", szPlatform));
+            if (File.Exists(szVersionPath))
+            {
+                using (TextReader txtR = File.OpenText(szVersionPath))
                 {
-                    Directory.CreateDirectory(szUploadSeverRoot);
+                    CVersionInfo oldVersionInfo = JsonMapper.ToObject<CVersionInfo>(new JsonReader(txtR));
+                    string szRecordVersionPath = CPackageUtility.Path.GetCombinePath(szRecordDic, Utility.Text.Format("{0}_version_{1}.txt", szPlatform, oldVersionInfo.InternalResourceVersion));
+                    File.Copy(szVersionPath, szRecordVersionPath);
                 }
-                string szUploadVersionDic = CPackageUtility.Path.GetCombinePath(szUploadSeverRoot, CABResConfig.ms_szHotFixVersionDicName);
-                if (!Directory.Exists(szUploadVersionDic))
-                {
-                    Directory.CreateDirectory(szUploadVersionDic);
-                }
-
-                string szRecordDic = CPackageUtility.Path.GetCombinePath(szUploadSeverRoot, ms_szPathUploadRecordPath);
-                if (!Directory.Exists(szRecordDic))
-                {
-                    Directory.CreateDirectory(szRecordDic);
-                }
-                string szVersionPath = CPackageUtility.Path.GetCombinePath(szUploadVersionDic, Utility.Text.Format("{0}_version.txt", szPlatform));
-                if (File.Exists(szVersionPath))
-                {
-                    using (TextReader txtR = File.OpenText(szVersionPath))
-                    {
-                        CVersionInfo oldVersionInfo = JsonMapper.ToObject<CVersionInfo>(new JsonReader(txtR));
-                        string szRecordVersionPath = CPackageUtility.Path.GetCombinePath(szRecordDic, Utility.Text.Format("{0}_version_{1}.txt", szPlatform, oldVersionInfo.InternalResourceVersion));
-                        File.Copy(szVersionPath, szRecordVersionPath);
-                    }
-                }
-                using (StreamWriter streamWriter = new StreamWriter(szVersionPath, false))
-                {
-                    streamWriter.Write(szVersionInfo);
-                }
+            }
+            using (StreamWriter streamWriter = new StreamWriter(szVersionPath, false))
+            {
+                streamWriter.Write(szVersionInfo);
             }
         }
 
@@ -114,7 +102,7 @@ namespace GameFrameworkPackageEditor
             string szAABResPath = Path.Combine(szAABResRootPath, "Android");
             FileTool.CopyDirectory(a_szOutputPackedPath, szAABResPath);
 
-            string szResListFileName =(a_szResListFileName);
+            string szResListFileName = (a_szResListFileName);
             string szPathSourceResListFile = Path.Combine(a_szOutputPackedPath, szResListFileName);
             string szPathTargetResListFile = Path.Combine(Application.streamingAssetsPath, szResListFileName);
             File.Delete(szPathTargetResListFile);

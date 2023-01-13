@@ -3,6 +3,7 @@ using GameFramework.DataTable;
 using UnityGameFramework.Runtime;
 using System.Collections.Generic;
 using System.Reflection;
+using GameFramework;
 
 namespace GameFrameworkPackage
 {
@@ -20,14 +21,7 @@ namespace GameFrameworkPackage
                 return;
             }
 
-            string[] splitedNames = dataTableName.Split('_');
-            if (splitedNames.Length > 2)
-            {
-                Log.Warning("Data table name is invalid.");
-                return;
-            }
-
-            string dataRowClassName = DataRowClassPrefixName + splitedNames[0];
+            string dataRowClassName = Utility.Text.Format("{0}{1}", DataRowClassPrefixName, dataTableName);
             Assembly assDefine = CGameEntryMgr.HotFixComponent.GetAsmByName(CHotFixSetting.GetHotFixDefineDllName());
             Type dataRowType = assDefine.GetType(dataRowClassName);
             if (dataRowType == null)
@@ -36,8 +30,7 @@ namespace GameFrameworkPackage
                 return;
             }
 
-            string name = splitedNames.Length > 1 ? splitedNames[1] : null;
-            DataTableBase dataTable = dataTableComponent.CreateDataTable(dataRowType, name);
+            DataTableBase dataTable = dataTableComponent.CreateDataTable(dataRowType);
             dataTable.ReadData(dataTableAssetName, CConstAssetPriority.DataTableAsset, userData);
         }
 
@@ -46,7 +39,7 @@ namespace GameFrameworkPackage
             IDataTable<T> dt = CGameEntryMgr.DataTable.GetDataTable<T>();
             if (dt == null)
             {
-                Log.Warning("Can not get data dt={0} row id ={1}.", dt.GetType(), a_nRowId);
+                Log.Warning("Can not get data dt={0} row id ={1}.", typeof(T), a_nRowId);
             }
             T dr = dt.GetDataRow(a_nRowId);
             if (dr == null)

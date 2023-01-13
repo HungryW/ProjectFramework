@@ -100,7 +100,7 @@ namespace GameFrameworkPackage
             {
                 return;
             }
-            m_fnOnEnd?.Invoke(m_bFailFlag);
+            m_fnOnEnd?.Invoke(!m_bFailFlag);
             ReferencePool.Release(this);
         }
 
