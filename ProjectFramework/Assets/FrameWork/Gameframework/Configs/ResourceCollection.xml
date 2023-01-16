@@ -48,6 +48,7 @@
       <Asset Guid="bcbc189ce8cd4154fb60c94fb4219dcf" ResourceName="Shader" />
       <Asset Guid="bf5f8eedab608a246be5471076e5449e" ResourceName="Atlas/UI/Common/Btn" />
       <Asset Guid="c0e5439660055bf47b6f800131f52fd3" ResourceName="Material" />
+      <Asset Guid="c16acbfe93ad34546a375de6cd2595de" ResourceName="DataTables" />
       <Asset Guid="c26e63a63bcb78c47b190e460b50927e" ResourceName="HotFix/Dll/HotFix" />
       <Asset Guid="c69877f49ef86f8439797245aff9e6c6" ResourceName="UI" />
       <Asset Guid="d2e1943f89231ca40bb35842067467e4" ResourceName="DataTables" />

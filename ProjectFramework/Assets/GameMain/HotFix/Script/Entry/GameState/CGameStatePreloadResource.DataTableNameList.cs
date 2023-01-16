@@ -11,6 +11,7 @@
                 "Music",
                 "Sound",
                 "UISound",
+                "IapId",
             };
             return arrName;
         }

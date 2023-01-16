@@ -73,7 +73,7 @@ namespace GameFrameworkPackage
                 return;
             }
 #if UNITY_ANDROID || UNITY_IOS
-            SetPreInitData(new CSDKCIS());
+            SetPreInitData(new CSDKEmpty());
 #else
             SetPreInitData(new CSDKEmpty());
 #endif

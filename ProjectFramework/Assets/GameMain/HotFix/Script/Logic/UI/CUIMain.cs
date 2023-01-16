@@ -40,8 +40,8 @@ namespace HotFixLogic.UI
             });
             BtnCancel.onClick.AddListener(() =>
             {
-                DRUIForm dr = CHotFixEntry.DataTable.GetDataTable<DRUIForm>().MaxIdDataRow;
-                LbContent.text = "取消点击了成功吧热更?aaaaa" + dr.AssetName;
+                DRIapId dr = CHotFixEntry.DataTable.GetDataTable<DRIapId>().MinIdDataRow;
+                LbContent.text = "取消点击了成功吧热更?我是安卓啦啦啦啦啦" + dr.iosLink;
 
             });
             BtnClose.onClick.AddListener(() => { LbContent.text = "关闭点击了"; });

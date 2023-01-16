@@ -1,0 +1,8 @@
+!∮id∮name∮googleLink∮iosLink∮testLink∮cost
+@∮int∮string∮string∮string∮string∮float
+∮101∮通用1档∮google_101∮ios_101∮google_101∮0.99
+∮102∮通用2档∮google_102∮ios_102∮google_102∮1.99
+∮103∮通用3档∮google_103∮ios_103∮google_103∮4.99
+∮104∮通用4档∮google_104∮ios_104∮google_104∮9.99
+∮105∮通用5档∮google_105∮ios_105∮google_105∮19.99
+∮106∮通用6档∮google_106∮ios_106∮google_106∮49.99
