@@ -1944,7 +1944,7 @@ static void __M2N_i4i8S56i8(const MethodInfo* method, uint16_t* argVarIndexs, St
 }
 
 
-// System.Int32 System.Collections.Generic.IComparer`1::Compare(T,T)
+// System.Int32 System.Collections.Generic.Comparer`1::Compare(T,T)
 static void __M2N_i4i8S56S56(const MethodInfo* method, uint16_t* argVarIndexs, StackObject* localVarBase, void* ret)
 {
     typedef int32_t (*NativeMethod)(int64_t __arg0, ValueTypeSize<56> __arg1, ValueTypeSize<56> __arg2, const MethodInfo* method);
@@ -2160,7 +2160,7 @@ static void __M2N_i4i8S96i8(const MethodInfo* method, uint16_t* argVarIndexs, St
 }
 
 
-// System.Int32 System.Collections.Generic.Comparer`1::Compare(T,T)
+// System.Int32 System.Collections.Generic.IComparer`1::Compare(T,T)
 static void __M2N_i4i8S96S96(const MethodInfo* method, uint16_t* argVarIndexs, StackObject* localVarBase, void* ret)
 {
     typedef int32_t (*NativeMethod)(int64_t __arg0, ValueTypeSize<96> __arg1, ValueTypeSize<96> __arg2, const MethodInfo* method);
@@ -3917,14 +3917,6 @@ static void __M2N_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8(const MethodInfo* met
 {
     typedef int64_t (*NativeMethod)(int64_t __arg0, int64_t __arg1, int64_t __arg2, int64_t __arg3, int64_t __arg4, int64_t __arg5, int64_t __arg6, int64_t __arg7, int64_t __arg8, int64_t __arg9, int64_t __arg10, int64_t __arg11, int64_t __arg12, int64_t __arg13, int64_t __arg14, int64_t __arg15, int64_t __arg16, int64_t __arg17, int64_t __arg18, const MethodInfo* method);
     *(int64_t*)ret = ((NativeMethod)(method->methodPointerCallByInterp))(*(int64_t*)(localVarBase+argVarIndexs[0]), *(int64_t*)(localVarBase+argVarIndexs[1]), *(int64_t*)(localVarBase+argVarIndexs[2]), *(int64_t*)(localVarBase+argVarIndexs[3]), *(int64_t*)(localVarBase+argVarIndexs[4]), *(int64_t*)(localVarBase+argVarIndexs[5]), *(int64_t*)(localVarBase+argVarIndexs[6]), *(int64_t*)(localVarBase+argVarIndexs[7]), *(int64_t*)(localVarBase+argVarIndexs[8]), *(int64_t*)(localVarBase+argVarIndexs[9]), *(int64_t*)(localVarBase+argVarIndexs[10]), *(int64_t*)(localVarBase+argVarIndexs[11]), *(int64_t*)(localVarBase+argVarIndexs[12]), *(int64_t*)(localVarBase+argVarIndexs[13]), *(int64_t*)(localVarBase+argVarIndexs[14]), *(int64_t*)(localVarBase+argVarIndexs[15]), *(int64_t*)(localVarBase+argVarIndexs[16]), *(int64_t*)(localVarBase+argVarIndexs[17]), *(int64_t*)(localVarBase+argVarIndexs[18]), method);
-}
-
-
-// System.String UnityGameFramework.Runtime.LocalizationComponent::GetString<T1,T2,T3,T4,T5,T6>(System.String,T1,T2,T3,T4,T5,T6)
-static void __M2N_i8i8i8i8i8i8i8r4i8(const MethodInfo* method, uint16_t* argVarIndexs, StackObject* localVarBase, void* ret)
-{
-    typedef int64_t (*NativeMethod)(int64_t __arg0, int64_t __arg1, int64_t __arg2, int64_t __arg3, int64_t __arg4, int64_t __arg5, float __arg6, int64_t __arg7, const MethodInfo* method);
-    *(int64_t*)ret = ((NativeMethod)(method->methodPointerCallByInterp))(*(int64_t*)(localVarBase+argVarIndexs[0]), *(int64_t*)(localVarBase+argVarIndexs[1]), *(int64_t*)(localVarBase+argVarIndexs[2]), *(int64_t*)(localVarBase+argVarIndexs[3]), *(int64_t*)(localVarBase+argVarIndexs[4]), *(int64_t*)(localVarBase+argVarIndexs[5]), *(float*)(localVarBase+argVarIndexs[6]), *(int64_t*)(localVarBase+argVarIndexs[7]), method);
 }
 
 
@@ -17523,7 +17515,6 @@ Managed2NativeMethodInfo hybridclr::interpreter::g_managed2nativeStub[] =
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", __M2N_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", __M2N_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", __M2N_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
-	{"i8i8i8i8i8i8i8r4i8", __M2N_i8i8i8i8i8i8i8r4i8},
 	{"i8i8i8i8i8i8i8S16i8", __M2N_i8i8i8i8i8i8i8S16i8},
 	{"i8i8i8i8i8i8S16", __M2N_i8i8i8i8i8i8S16},
 	{"i8i8i8i8i8r4", __M2N_i8i8i8i8i8r4},
@@ -19975,7 +19966,7 @@ static int32_t __N2M_i4i8S56(int64_t __arg0, ValueTypeSize<56> __arg1, const Met
 }
 
 
-// System.Int32 System.Collections.Generic.IComparer`1::Compare(T,T)
+// System.Int32 System.Collections.Generic.Comparer`1::Compare(T,T)
 static int32_t __N2M_i4i8S56S56(int64_t __arg0, ValueTypeSize<56> __arg1, ValueTypeSize<56> __arg2, const MethodInfo* method)
 {
     StackObject args[4] = {*(uint64_t*)&__arg0, (uint64_t)&__arg1, (uint64_t)&__arg2 };
@@ -20085,7 +20076,7 @@ static int32_t __N2M_i4i8S96(int64_t __arg0, ValueTypeSize<96> __arg1, const Met
 }
 
 
-// System.Int32 System.Collections.Generic.Comparer`1::Compare(T,T)
+// System.Int32 System.Collections.Generic.IComparer`1::Compare(T,T)
 static int32_t __N2M_i4i8S96S96(int64_t __arg0, ValueTypeSize<96> __arg1, ValueTypeSize<96> __arg2, const MethodInfo* method)
 {
     StackObject args[4] = {*(uint64_t*)&__arg0, (uint64_t)&__arg1, (uint64_t)&__arg2 };
@@ -21230,16 +21221,6 @@ static int64_t __N2M_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8(int64_t __arg0, in
 {
     StackObject args[20] = {*(uint64_t*)&__arg0, *(uint64_t*)&__arg1, *(uint64_t*)&__arg2, *(uint64_t*)&__arg3, *(uint64_t*)&__arg4, *(uint64_t*)&__arg5, *(uint64_t*)&__arg6, *(uint64_t*)&__arg7, *(uint64_t*)&__arg8, *(uint64_t*)&__arg9, *(uint64_t*)&__arg10, *(uint64_t*)&__arg11, *(uint64_t*)&__arg12, *(uint64_t*)&__arg13, *(uint64_t*)&__arg14, *(uint64_t*)&__arg15, *(uint64_t*)&__arg16, *(uint64_t*)&__arg17, *(uint64_t*)&__arg18 };
     StackObject* ret = args + 19;
-    Interpreter::Execute(method, args, ret);
-    return *(int64_t*)ret;
-}
-
-
-// System.String GameFramework.Localization.ILocalizationManager::GetString<T1,T2,T3,T4,T5,T6>(System.String,T1,T2,T3,T4,T5,T6)
-static int64_t __N2M_i8i8i8i8i8i8i8r4i8(int64_t __arg0, int64_t __arg1, int64_t __arg2, int64_t __arg3, int64_t __arg4, int64_t __arg5, float __arg6, int64_t __arg7, const MethodInfo* method)
-{
-    StackObject args[9] = {*(uint64_t*)&__arg0, *(uint64_t*)&__arg1, *(uint64_t*)&__arg2, *(uint64_t*)&__arg3, *(uint64_t*)&__arg4, *(uint64_t*)&__arg5, *(uint64_t*)&__arg6, *(uint64_t*)&__arg7 };
-    StackObject* ret = args + 8;
     Interpreter::Execute(method, args, ret);
     return *(int64_t*)ret;
 }
@@ -28625,7 +28606,6 @@ Native2ManagedMethodInfo hybridclr::interpreter::g_native2managedStub[] =
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", (Il2CppMethodPointer)__N2M_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", (Il2CppMethodPointer)__N2M_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", (Il2CppMethodPointer)__N2M_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
-	{"i8i8i8i8i8i8i8r4i8", (Il2CppMethodPointer)__N2M_i8i8i8i8i8i8i8r4i8},
 	{"i8i8i8i8i8i8i8S16i8", (Il2CppMethodPointer)__N2M_i8i8i8i8i8i8i8S16i8},
 	{"i8i8i8i8i8i8S16", (Il2CppMethodPointer)__N2M_i8i8i8i8i8i8S16},
 	{"i8i8i8i8i8u1i8", (Il2CppMethodPointer)__N2M_i8i8i8i8i8u1i8},
@@ -30621,16 +30601,6 @@ static int64_t __N2M_AdjustorThunk_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8(int64_
 {
     StackObject args[19] = {(uint64_t)(*(uint8_t**)&__arg0 + sizeof(Il2CppObject)), *(uint64_t*)&__arg1, *(uint64_t*)&__arg2, *(uint64_t*)&__arg3, *(uint64_t*)&__arg4, *(uint64_t*)&__arg5, *(uint64_t*)&__arg6, *(uint64_t*)&__arg7, *(uint64_t*)&__arg8, *(uint64_t*)&__arg9, *(uint64_t*)&__arg10, *(uint64_t*)&__arg11, *(uint64_t*)&__arg12, *(uint64_t*)&__arg13, *(uint64_t*)&__arg14, *(uint64_t*)&__arg15, *(uint64_t*)&__arg16, *(uint64_t*)&__arg17 };
     StackObject* ret = args + 18;
-    Interpreter::Execute(method, args, ret);
-    return *(int64_t*)ret;
-}
-
-
-// System.String GameFramework.Localization.ILocalizationManager::GetString<T1,T2,T3,T4,T5,T6>(System.String,T1,T2,T3,T4,T5,T6)
-static int64_t __N2M_AdjustorThunk_i8i8i8i8i8i8i8r4i8(int64_t __arg0, int64_t __arg1, int64_t __arg2, int64_t __arg3, int64_t __arg4, int64_t __arg5, float __arg6, int64_t __arg7, const MethodInfo* method)
-{
-    StackObject args[9] = {(uint64_t)(*(uint8_t**)&__arg0 + sizeof(Il2CppObject)), *(uint64_t*)&__arg1, *(uint64_t*)&__arg2, *(uint64_t*)&__arg3, *(uint64_t*)&__arg4, *(uint64_t*)&__arg5, *(uint64_t*)&__arg6, *(uint64_t*)&__arg7 };
-    StackObject* ret = args + 8;
     Interpreter::Execute(method, args, ret);
     return *(int64_t*)ret;
 }
@@ -33727,7 +33697,6 @@ NativeAdjustThunkMethodInfo hybridclr::interpreter::g_adjustThunkStub[] =
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", (Il2CppMethodPointer)__N2M_AdjustorThunk_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", (Il2CppMethodPointer)__N2M_AdjustorThunk_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", (Il2CppMethodPointer)__N2M_AdjustorThunk_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
-	{"i8i8i8i8i8i8i8r4i8", (Il2CppMethodPointer)__N2M_AdjustorThunk_i8i8i8i8i8i8i8r4i8},
 	{"i8i8i8i8i8i8i8S16i8", (Il2CppMethodPointer)__N2M_AdjustorThunk_i8i8i8i8i8i8i8S16i8},
 	{"i8i8i8i8i8i8S16", (Il2CppMethodPointer)__N2M_AdjustorThunk_i8i8i8i8i8i8S16},
 	{"i8i8i8i8i8u1i8", (Il2CppMethodPointer)__N2M_AdjustorThunk_i8i8i8i8i8u1i8},

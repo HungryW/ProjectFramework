@@ -3416,14 +3416,6 @@ static void __M2N_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8(const MethodInfo* met
 }
 
 
-// System.String UnityGameFramework.Runtime.LocalizationComponent::GetString<T1,T2,T3,T4,T5,T6>(System.String,T1,T2,T3,T4,T5,T6)
-static void __M2N_i8i8i8i8i8i8i8r4i8(const MethodInfo* method, uint16_t* argVarIndexs, StackObject* localVarBase, void* ret)
-{
-    typedef int64_t (*NativeMethod)(int64_t __arg0, int64_t __arg1, int64_t __arg2, int64_t __arg3, int64_t __arg4, int64_t __arg5, float __arg6, int64_t __arg7, const MethodInfo* method);
-    *(int64_t*)ret = ((NativeMethod)(method->methodPointerCallByInterp))(*(int64_t*)(localVarBase+argVarIndexs[0]), *(int64_t*)(localVarBase+argVarIndexs[1]), *(int64_t*)(localVarBase+argVarIndexs[2]), *(int64_t*)(localVarBase+argVarIndexs[3]), *(int64_t*)(localVarBase+argVarIndexs[4]), *(int64_t*)(localVarBase+argVarIndexs[5]), *(float*)(localVarBase+argVarIndexs[6]), *(int64_t*)(localVarBase+argVarIndexs[7]), method);
-}
-
-
 // DG.Tweening.Core.TweenerCore`3<T1,T2,TPlugOptions> DG.Tweening.DOTween::To<T1,T2,TPlugOptions>(DG.Tweening.Plugins.Core.ABSTweenPlugin`3<T1,T2,TPlugOptions>,DG.Tweening.Core.DOGetter`1<T1>,DG.Tweening.Core.DOSetter`1<T1>,T2,System.Single)
 static void __M2N_i8i8i8i8i8r4(const MethodInfo* method, uint16_t* argVarIndexs, StackObject* localVarBase, void* ret)
 {
@@ -14060,7 +14052,6 @@ Managed2NativeMethodInfo hybridclr::interpreter::g_managed2nativeStub[] =
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", __M2N_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", __M2N_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", __M2N_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
-	{"i8i8i8i8i8i8i8r4i8", __M2N_i8i8i8i8i8i8i8r4i8},
 	{"i8i8i8i8i8r4", __M2N_i8i8i8i8i8r4},
 	{"i8i8i8i8i8u1", __M2N_i8i8i8i8i8u1},
 	{"i8i8i8i8i8u1i8", __M2N_i8i8i8i8i8u1i8},
@@ -17145,16 +17136,6 @@ static int64_t __N2M_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8(int64_t __arg0, in
 {
     StackObject args[20] = {*(uint64_t*)&__arg0, *(uint64_t*)&__arg1, *(uint64_t*)&__arg2, *(uint64_t*)&__arg3, *(uint64_t*)&__arg4, *(uint64_t*)&__arg5, *(uint64_t*)&__arg6, *(uint64_t*)&__arg7, *(uint64_t*)&__arg8, *(uint64_t*)&__arg9, *(uint64_t*)&__arg10, *(uint64_t*)&__arg11, *(uint64_t*)&__arg12, *(uint64_t*)&__arg13, *(uint64_t*)&__arg14, *(uint64_t*)&__arg15, *(uint64_t*)&__arg16, *(uint64_t*)&__arg17, *(uint64_t*)&__arg18 };
     StackObject* ret = args + 19;
-    Interpreter::Execute(method, args, ret);
-    return *(int64_t*)ret;
-}
-
-
-// System.String GameFramework.Localization.ILocalizationManager::GetString<T1,T2,T3,T4,T5,T6>(System.String,T1,T2,T3,T4,T5,T6)
-static int64_t __N2M_i8i8i8i8i8i8i8r4i8(int64_t __arg0, int64_t __arg1, int64_t __arg2, int64_t __arg3, int64_t __arg4, int64_t __arg5, float __arg6, int64_t __arg7, const MethodInfo* method)
-{
-    StackObject args[9] = {*(uint64_t*)&__arg0, *(uint64_t*)&__arg1, *(uint64_t*)&__arg2, *(uint64_t*)&__arg3, *(uint64_t*)&__arg4, *(uint64_t*)&__arg5, *(uint64_t*)&__arg6, *(uint64_t*)&__arg7 };
-    StackObject* ret = args + 8;
     Interpreter::Execute(method, args, ret);
     return *(int64_t*)ret;
 }
@@ -22354,7 +22335,6 @@ Native2ManagedMethodInfo hybridclr::interpreter::g_native2managedStub[] =
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", (Il2CppMethodPointer)__N2M_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", (Il2CppMethodPointer)__N2M_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", (Il2CppMethodPointer)__N2M_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
-	{"i8i8i8i8i8i8i8r4i8", (Il2CppMethodPointer)__N2M_i8i8i8i8i8i8i8r4i8},
 	{"i8i8i8i8i8u1i8", (Il2CppMethodPointer)__N2M_i8i8i8i8i8u1i8},
 	{"i8i8i8i8r4", (Il2CppMethodPointer)__N2M_i8i8i8i8r4},
 	{"i8i8i8i8r4i4", (Il2CppMethodPointer)__N2M_i8i8i8i8r4i4},
@@ -23964,16 +23944,6 @@ static int64_t __N2M_AdjustorThunk_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8(int64_
 {
     StackObject args[19] = {(uint64_t)(*(uint8_t**)&__arg0 + sizeof(Il2CppObject)), *(uint64_t*)&__arg1, *(uint64_t*)&__arg2, *(uint64_t*)&__arg3, *(uint64_t*)&__arg4, *(uint64_t*)&__arg5, *(uint64_t*)&__arg6, *(uint64_t*)&__arg7, *(uint64_t*)&__arg8, *(uint64_t*)&__arg9, *(uint64_t*)&__arg10, *(uint64_t*)&__arg11, *(uint64_t*)&__arg12, *(uint64_t*)&__arg13, *(uint64_t*)&__arg14, *(uint64_t*)&__arg15, *(uint64_t*)&__arg16, *(uint64_t*)&__arg17 };
     StackObject* ret = args + 18;
-    Interpreter::Execute(method, args, ret);
-    return *(int64_t*)ret;
-}
-
-
-// System.String GameFramework.Localization.ILocalizationManager::GetString<T1,T2,T3,T4,T5,T6>(System.String,T1,T2,T3,T4,T5,T6)
-static int64_t __N2M_AdjustorThunk_i8i8i8i8i8i8i8r4i8(int64_t __arg0, int64_t __arg1, int64_t __arg2, int64_t __arg3, int64_t __arg4, int64_t __arg5, float __arg6, int64_t __arg7, const MethodInfo* method)
-{
-    StackObject args[9] = {(uint64_t)(*(uint8_t**)&__arg0 + sizeof(Il2CppObject)), *(uint64_t*)&__arg1, *(uint64_t*)&__arg2, *(uint64_t*)&__arg3, *(uint64_t*)&__arg4, *(uint64_t*)&__arg5, *(uint64_t*)&__arg6, *(uint64_t*)&__arg7 };
-    StackObject* ret = args + 8;
     Interpreter::Execute(method, args, ret);
     return *(int64_t*)ret;
 }
@@ -26193,7 +26163,6 @@ NativeAdjustThunkMethodInfo hybridclr::interpreter::g_adjustThunkStub[] =
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", (Il2CppMethodPointer)__N2M_AdjustorThunk_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", (Il2CppMethodPointer)__N2M_AdjustorThunk_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
 	{"i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8", (Il2CppMethodPointer)__N2M_AdjustorThunk_i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8i8},
-	{"i8i8i8i8i8i8i8r4i8", (Il2CppMethodPointer)__N2M_AdjustorThunk_i8i8i8i8i8i8i8r4i8},
 	{"i8i8i8i8i8u1i8", (Il2CppMethodPointer)__N2M_AdjustorThunk_i8i8i8i8i8u1i8},
 	{"i8i8i8i8r4", (Il2CppMethodPointer)__N2M_AdjustorThunk_i8i8i8i8r4},
 	{"i8i8i8i8r4i4", (Il2CppMethodPointer)__N2M_AdjustorThunk_i8i8i8i8r4i4},

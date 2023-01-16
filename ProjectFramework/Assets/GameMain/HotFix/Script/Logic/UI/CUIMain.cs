@@ -41,7 +41,7 @@ namespace HotFixLogic.UI
             BtnCancel.onClick.AddListener(() =>
             {
                 DRUIForm dr = CHotFixEntry.DataTable.GetDataTable<DRUIForm>().MaxIdDataRow;
-                LbContent.text = "取消点击了成功吧热更?" + dr.AssetName;
+                LbContent.text = "取消点击了成功吧热更?aaaaa" + dr.AssetName;
 
             });
             BtnClose.onClick.AddListener(() => { LbContent.text = "关闭点击了"; });

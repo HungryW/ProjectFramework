@@ -91,7 +91,7 @@ namespace GameFrameworkPackage
             }
 
             float fProgress = (float)currentTotalUpdateLength / m_UpdateTotalCompressedLength;
-            string szDesc = CGameEntryMgr.Localization.GetString("UpdateResource.Tips", m_UpdateSuccessCount.ToString(), m_UpdateCount.ToString(), GetByteLengthString(currentTotalUpdateLength), GetByteLengthString(m_UpdateTotalCompressedLength), fProgress, GetByteLengthString((int)CGameEntryMgr.Download.CurrentSpeed));
+            string szDesc = CGameEntryMgr.Localization.GetString("UpdateResource.Tips", m_UpdateSuccessCount.ToString(), m_UpdateCount.ToString(), GetByteLengthString(currentTotalUpdateLength), GetByteLengthString(m_UpdateTotalCompressedLength), fProgress.ToString(), GetByteLengthString((int)CGameEntryMgr.Download.CurrentSpeed));
             CGameEntryMgr.PreloadComponent.SetUpdateResProgress(fProgress, szDesc);
         }
 
