@@ -21,7 +21,6 @@ namespace HotFixEntry
         }
 
     }
-
     public abstract class CFrameworkBase
     {
         public CFrameworkBase()
@@ -51,14 +50,17 @@ namespace HotFixEntry
         public static LocalizationComponent Localization { private set; get; }
         public static EventComponent Event { private set; get; }
         public static DataTableComponent DataTable { private set; get; }
+        public static ObjectPoolComponent ObjectPool { private set; get; }
         public static CFrameworkSound Sound { private set; get; }
         public static CFrameWorkUI UI { private set; get; }
         public static CGameStateMgr GameStateMgr { private set; get; }
+
         private static void _InitFramework()
         {
             Localization = CGameEntryMgr.Localization;
             Event = CGameEntryMgr.Event;
             DataTable = CGameEntryMgr.DataTable;
+            ObjectPool = CGameEntryMgr.ObjectPool;
 
             Sound = new CFrameworkSound();
             UI = new CFrameWorkUI();

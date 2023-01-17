@@ -197,7 +197,7 @@ namespace HotFixEntry
             _SetCanRaycastTarget(false);
             _PlayHideAnim(a_fnOnHidePlayEnd);
         }
-        public virtual void _PlayHideAnim(Action a_fnOnHidePlayEnd)
+        protected virtual void _PlayHideAnim(Action a_fnOnHidePlayEnd)
         {
             a_fnOnHidePlayEnd.SafeInvoke();
         }

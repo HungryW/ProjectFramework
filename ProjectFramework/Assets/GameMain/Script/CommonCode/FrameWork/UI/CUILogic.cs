@@ -9,17 +9,6 @@ using UnityEngine.SceneManagement;
 
 namespace GameFrameworkPackage
 {
-    public class CListenEventData
-    {
-        public int m_nEventId = -1;
-        public EventHandler<GameEventArgs> m_handlerEvent = null;
-
-        public CListenEventData(int a_nId, EventHandler<GameEventArgs> a_handler)
-        {
-            m_nEventId = a_nId;
-            m_handlerEvent = a_handler;
-        }
-    }
 
     public abstract partial class CLogicUI : UIFormLogic
     {
@@ -33,8 +22,8 @@ namespace GameFrameworkPackage
         private int m_nBeforeDepth;
         private bool m_bNeedOpenAnim = true;
         private bool m_bNeedResetTxtLanguageShow = true;
+        private CSubscribeEventTool m_eventTool;
 
-        private List<CListenEventData> m_listEeventData = new List<CListenEventData>();
 
         public int OriginalDepth
         {
@@ -72,7 +61,7 @@ namespace GameFrameworkPackage
 
         public void SubscribeEvent(int a_nEventId, EventHandler<GameEventArgs> a_handler)
         {
-            m_listEeventData.Add(new CListenEventData(a_nEventId, a_handler));
+            m_eventTool.RegistEvent(a_nEventId, a_handler);
         }
 
         public static void SetMainFont(Font a_Font)
@@ -92,8 +81,8 @@ namespace GameFrameworkPackage
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
+            m_eventTool = _CreateEventTool();
             CGameEntryMgr.UI.SetUIInstanceLocked(this, true);
-            m_listEeventData.Clear();
             m_Canvas = gameObject.GetOrAddComponent<Canvas>();
             m_Canvas.worldCamera = CCamera.GetUICamera();
             m_Canvas.overrideSorting = true;
@@ -115,6 +104,12 @@ namespace GameFrameworkPackage
 
             gameObject.GetOrAddComponent<GraphicRaycaster>();
             _InitLayer();
+        }
+
+        private CSubscribeEventTool _CreateEventTool()
+        {
+            CSubscribeEventTool.Del(m_eventTool);
+            return CSubscribeEventTool.Create();
         }
 
         private void _InitLayer()
@@ -239,27 +234,11 @@ namespace GameFrameworkPackage
         {
             if (a_bVisible)
             {
-                _SubscribeAllEvent();
+                m_eventTool.SubscribeAllEvent();
             }
             else
             {
-                _UnsubscribeAllEvent();
-            }
-        }
-
-        private void _SubscribeAllEvent()
-        {
-            for (int i = 0; i < m_listEeventData.Count; i++)
-            {
-                CGameEntryMgr.Event.Subscribe(m_listEeventData[i].m_nEventId, m_listEeventData[i].m_handlerEvent);
-            }
-        }
-
-        private void _UnsubscribeAllEvent()
-        {
-            for (int i = 0; i < m_listEeventData.Count; i++)
-            {
-                CGameEntryMgr.Event.Unsubscribe(m_listEeventData[i].m_nEventId, m_listEeventData[i].m_handlerEvent);
+                m_eventTool.UnSubscribeAllEvent();
             }
         }
 
