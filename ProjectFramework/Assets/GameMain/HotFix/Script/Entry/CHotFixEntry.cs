@@ -54,6 +54,7 @@ namespace HotFixEntry
         public static CFrameworkSound Sound { private set; get; }
         public static CFrameWorkUI UI { private set; get; }
         public static CGameStateMgr GameStateMgr { private set; get; }
+        public static CFrameWorkEntity Entity { private set; get; }
 
         private static void _InitFramework()
         {
@@ -65,6 +66,7 @@ namespace HotFixEntry
             Sound = new CFrameworkSound();
             UI = new CFrameWorkUI();
             GameStateMgr = new CGameStateMgr();
+            Entity = new CFrameWorkEntity();
         }
     }
 }

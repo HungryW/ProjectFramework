@@ -40,6 +40,7 @@ namespace GameFrameworkPackage
     }
     public class CHotFixLogicEntity : EntityLogic
     {
+        private CSubscribeEventTool m_EventTool;
         public CHotFixLogicEntityAgentBase m_AgentHotFix { private set; get; }
         protected override void OnInit(object userData)
         {
@@ -51,7 +52,7 @@ namespace GameFrameworkPackage
                 return;
             }
             m_AgentHotFix = (CHotFixLogicEntityAgentBase)CGameEntryMgr.HotFixComponent.CreateHotFixInstance(param.m_szEntityLogicDllName, param.m_szEntityLogicClassName, null);
-            m_AgentHotFix.Init(this, param.m_oUserData);
+            m_AgentHotFix.__Init(this, param.m_oUserData);
         }
         protected override void OnRecycle()
         {
@@ -77,6 +78,12 @@ namespace GameFrameworkPackage
         {
             base.OnUpdate(a_fElapseSeconds, a_fRealElapeSeconds);
             m_AgentHotFix.OnUpdate(a_fElapseSeconds, a_fRealElapeSeconds);
+        }
+
+        protected override void InternalSetVisible(bool visible)
+        {
+            base.InternalSetVisible(visible);
+            m_AgentHotFix.__OnVisibleChange(visible);
         }
     }
 }
