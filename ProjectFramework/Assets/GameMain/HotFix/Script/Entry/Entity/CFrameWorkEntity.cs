@@ -19,16 +19,25 @@ namespace HotFixEntry
         public CFrameWorkEntity() : base()
         {
             refComponent = CGameEntryMgr.Entity;
+            ms_nIdSeed = 0;
         }
 
         public override void Clean()
         {
+            ms_nIdSeed = 0;
             refComponent = null;
         }
 
-        public void ShowEntity(CEntityData a_EntityData, string a_szEntityGroup, string a_szAssetFullPath, string a_szDllName, string a_szClassFullName)
+        public static int ms_nIdSeed = 0;
+        public static int GenerateId()
+        {
+            return ms_nIdSeed++;
+        }
+
+        public int ShowEntity(CEntityData a_EntityData, string a_szEntityGroup, string a_szAssetFullPath, string a_szDllName, string a_szClassFullName)
         {
             refComponent.ShowEntity(a_szEntityGroup, a_szAssetFullPath, a_szDllName, a_szClassFullName, a_EntityData.m_nId, a_EntityData);
+            return a_EntityData.m_nId;
         }
 
         public void HideEntity(CEntityBase a_entity)
