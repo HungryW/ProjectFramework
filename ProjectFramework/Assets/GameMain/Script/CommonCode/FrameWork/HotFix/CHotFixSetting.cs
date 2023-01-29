@@ -13,7 +13,6 @@ namespace GameFrameworkPackage
     public static class CHotFixSetting
     {
         public static string ms_szHotFixEntryNamespace = "HotFixEntry";
-        public static string ms_szHotFixLogicUINamespace = "Logic.UI";
 
         public static string ms_szHotFixRootPath = "Assets/GameMain/HotFix";
         public static string ms_szDllResSuffix = "bytes";
@@ -38,11 +37,6 @@ namespace GameFrameworkPackage
         public static string GetHotFixEntryClassFullName(string a_szClassName)
         {
             return _GetHotFixClassFullName(ms_szHotFixEntryNamespace, a_szClassName);
-        }
-
-        public static string GetHotFixLogicUIClassFullName(string a_szClassName)
-        {
-            return _GetHotFixClassFullName(ms_szHotFixLogicUINamespace, a_szClassName);
         }
 
         private static string _GetHotFixClassFullName(string a_szNameSpace, string a_szClassName)

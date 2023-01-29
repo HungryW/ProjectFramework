@@ -528,6 +528,26 @@ PrefabInstance:
       propertyPath: m_LocalizationHelperTypeName
       value: GameFrameworkPackage.CLocalizationXmlHelper
       objectReference: {fileID: 0}
+    - target: {fileID: 11494652, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
+      propertyPath: m_EntityGroups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11494652, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
+      propertyPath: m_EntityGroups.Array.data[0].m_Name
+      value: ParticleUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 11494652, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
+      propertyPath: m_EntityGroups.Array.data[0].m_InstanceCapacity
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 11494652, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
+      propertyPath: m_EntityGroups.Array.data[0].m_InstanceExpireTime
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 11494652, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
+      propertyPath: m_EntityGroups.Array.data[0].m_InstanceAutoReleaseInterval
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 11497722, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_ResourceMode
       value: 2

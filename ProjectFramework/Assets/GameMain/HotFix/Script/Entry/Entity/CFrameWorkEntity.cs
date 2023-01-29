@@ -8,7 +8,7 @@ using UnityGameFramework.Runtime;
 
 namespace HotFixEntry
 {
-    public class CFrameWorkEntity : CFrameworkBase
+    public partial class CFrameWorkEntity : CFrameworkBase
     {
         private EntityComponent refComponent
         {

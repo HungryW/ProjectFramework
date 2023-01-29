@@ -3,22 +3,38 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using GameFrameworkPackage;
+using UnityEngine;
 
 namespace HotFixEntry
 {
     public class CEntityData
     {
-        public int m_nId { private set; get; }
+        public int m_nId { protected set; get; }
         public CEntityData(int a_nId)
         {
             m_nId = a_nId;
         }
+        protected virtual void _CleanData()
+        {
+            m_nId = -1;
+        }
+
+        private static int ms_IdSeed;
+
+        public static int GenerateId()
+        {
+            return ms_IdSeed++;
+        }
     }
 
-    public class CEntityBase : CHotFixLogicEntityAgentBase
+    public class CEntityBase : CHotFixLogicEntityAgentBase, IGameObj
     {
         private CEntityData m_data;
         private CSubscribeEventTool m_eventTool;
+
+        public Transform transform => EntityLogic.CachedTransform;
+
+        public GameObject gameObject => transform.gameObject;
 
         public int GetId()
         {
@@ -27,6 +43,12 @@ namespace HotFixEntry
         protected override void _OnInit(object userData)
         {
             m_eventTool = _CreateEventTool();
+            _InitComponents();
+        }
+
+        protected virtual void _InitComponents()
+        {
+
         }
 
         private CSubscribeEventTool _CreateEventTool()

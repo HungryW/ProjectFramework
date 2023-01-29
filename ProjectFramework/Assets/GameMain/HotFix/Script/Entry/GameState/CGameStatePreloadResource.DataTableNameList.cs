@@ -12,6 +12,7 @@
                 "Sound",
                 "UISound",
                 "IapId",
+                "Particle",
             };
             return arrName;
         }

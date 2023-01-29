@@ -1,5 +1,6 @@
 using Defines;
 using HotFixEntry;
+using HotFixLogic.Entity;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,18 +31,28 @@ namespace HotFixLogic.UI
         protected override void _OnInit(object userData)
         {
             base._OnInit(userData);
-            BtnConfirm.onClick.AddListener(() =>
-            {
-                LbContent.text = "确认点击了";
-                CHotFixEntry.Shutdown(UnityGameFramework.Runtime.ShutdownType.Restart);
-            });
-            BtnCancel.onClick.AddListener(() =>
-            {
-                DRIapId dr = CHotFixEntry.DataTable.GetDataTable<DRIapId>().MinIdDataRow;
-                LbContent.text = "取消点击了成功吧热更?我是安卓啦啦啦啦啦" + dr.iosLink;
-
-            });
+            BtnConfirm.onClick.AddListener(_OnConfirmClick);
+            BtnCancel.onClick.AddListener(_OnCnacelClick);
             BtnClose.onClick.AddListener(() => { LbContent.text = "关闭点击了"; });
+        }
+
+        private void _OnConfirmClick()
+        {
+            LbContent.text = "确认点击了";
+            _PlayUIPar(EParticleID.Chouka_star);
+        }
+
+        private void _OnCnacelClick()
+        {
+
+            DRIapId dr = CHotFixEntry.DataTable.GetDataTable<DRIapId>().MinIdDataRow;
+            LbContent.text = "取消点击了成功吧热更?我是安卓啦啦啦啦啦" + dr.iosLink;
+            _PlayUIPar(EParticleID.Huizhang_shengji01);
+        }
+
+        private void _PlayUIPar(EParticleID a_eParId)
+        {
+            CParticleUIEntity.PlayPar(a_eParId, LbContent.transform, null);
         }
     }
 }

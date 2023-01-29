@@ -79,9 +79,9 @@ namespace GameFrameworkPackage
             return Utility.Text.Format("Tool/{0}", a_szName);
         }
 
-        public static string GetParticleAsset(string particleName)
+        public static string GetParticleAsset(string a_szGroupName, string particleName)
         {
-            return Utility.Text.Format("Assets/GameMain/Particle/Prefab/{0}.prefab", particleName);
+            return Utility.Text.Format("Assets/GameMain/Particle/Prefab/{0}/{1}.prefab", a_szGroupName, particleName);
         }
     }
 }

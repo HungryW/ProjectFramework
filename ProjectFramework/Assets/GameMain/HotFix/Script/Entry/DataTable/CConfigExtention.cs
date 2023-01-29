@@ -22,5 +22,14 @@ namespace HotFixEntry
         {
             return Type.GetType(Utility.Text.Format("HotFixEntry.{0}", a_dr.GameStateName));
         }
+
+        public static string GetAssetFullName(this DRParticle a_dr)
+        {
+            return CAssestPathUtility.GetParticleAsset(a_dr.GroupName, a_dr.AssetName);
+        }
+        public static string GetFullClassName(this DRParticle a_dr)
+        {
+            return Utility.Text.Format("{0}.Entity.{1}", CHotFixSetting.GetHotFixLogicDllName(), a_dr.ClassName);
+        }
     }
 }
